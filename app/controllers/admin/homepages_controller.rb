@@ -1,5 +1,4 @@
-class Admin::HomepagesController < ApplicationController
-  layout "layouts/admin/application"
+class Admin::HomepagesController < Admin::BaseController
   def index
   end
 end

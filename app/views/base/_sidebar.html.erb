@@ -1,10 +1,10 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 background">
   <!-- Brand Logo -->
-  <a href="index3.html" class="brand-link">
+  <%= link_to admin_root_path, class:"brand-link" do%>
     <%= image_tag "admin.png", class:"brand-image img-circle elevation-3" , style:"opacity: .8"%>
     <span class="brand-text font-weight-light">Admin System</span>
-  </a>
+  <% end %>
 
   <!-- Sidebar -->
   <div class="sidebar">
@@ -14,7 +14,7 @@
          <%= image_tag "admin-1.png", class:"img-circle elevation-2"%>
       </div>
       <div class="info">
-        <a href="#" class="d-block">FAST FOOD</a>
+        <%= link_to "FAST FOOD",admin_root_path, class:"d-block logo" %>
       </div>
     </div>
 
@@ -24,9 +24,9 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
+          <a href="#" class="nav-link active fix">
+            <i class="nav-icon fas fa-tachometer-alt change"></i>
+            <p class="change">
               Starter Pages
               <i class="right fas fa-angle-left"></i>
             </p>
@@ -34,198 +34,199 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="#" class="nav-link active">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Active Page</p>
+                <i class="far fa-circle nav-icon change"></i>
+                <p class="change">Active Page</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Inactive Page</p>
+                <i class="far fa-circle nav-icon change"></i>
+                <p class="change">Inactive Page</p>
               </a>
             </li>
           </ul>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
-            <p>
+            <i class="nav-icon fas fa-th change"></i>
+            <p class="change">
               Simple Link
-              <span class="right badge badge-danger">New</span>
+              <span class="right badge badge-danger change">New</span>
             </p>
           </a>
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
+              <i class="nav-icon fas fa-chart-pie change"></i>
+              <p class="change">
                 Charts
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">ChartJS</p>
                 </a>
               </li>
             </ul>
         </li>
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
-              <p>
+              <i class="nav-icon fas fa-table change"></i>
+              <p class="change">
                 Tables
-                <i class="fas fa-angle-left right"></i>
+                <i class="fas fa-angle-left right change"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/tables/simple.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Simple Tables</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Simple Tables</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">DataTables</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>jsGrid</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">jsGrid</p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-header">EXAMPLES</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
+              <i class="nav-icon far fa-envelope change"></i>
+              <p class="change">
                 Mailbox
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Inbox</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Compose</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Read</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-book"></i>
-              <p>
+              <i class="nav-icon fas fa-book change"></i>
+              <p class="change">
                 Pages
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/invoice.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Invoice</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Invoice</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/profile.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/e-commerce.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>E-commerce</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">E-commerce</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/projects.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Projects</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Projects</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-add.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Add</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Project Add</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-edit.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Edit</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Project Edit</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/project-detail.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project Detail</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Project Detail</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/contacts.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Contacts</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Contacts</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>
+              <i class="nav-icon far fa-plus-square change"></i>
+              <p class="change">
                 Extras
-                <i class="fas fa-angle-left right"></i>
+                <i class="fas fa-angle-left right "></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/register.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Register</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Register</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/forgot-password.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Forgot Password</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Forgot Password</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/language-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Language Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Error 404</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Error 500</p>
                 </a>
               </li>
             </ul>
