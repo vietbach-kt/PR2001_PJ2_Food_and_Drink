@@ -1,0 +1,25 @@
+  <div class="card">
+  <div class="card-header">
+    <h2 >Products</h2>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name Product</th>
+          <th> Information </th> 
+          <th>Old Price</th>
+          <th>Price</th>
+          <th>Style</th>
+          <th> Action </th>
+        </tr>
+      </thead>
+    <tbody>  
+        <%= @products.each_with_index  do |product, index| %>
+          <%= render 'product', product: product, index: index %>
+        <% end %>
+    </tbody>
+  </table>
+  </div>

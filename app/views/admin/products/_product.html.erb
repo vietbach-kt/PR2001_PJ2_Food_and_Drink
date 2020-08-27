@@ -1,0 +1,17 @@
+<tr>
+  <td><%= index +1 %></td>
+  <td><%= product.name_product %></td>
+  <td><%= product.information %></td>
+  <td><%= product.old_price %></td>
+  <td><%= product.price %></td>
+  <td><%= product.kind %></td>
+  <td>
+    <%= link_to edit_admin_category_product_path(@category, product) do %>
+    
+		  <i class='fas fa-wrench' style='color: black'></i>
+    <% end %>
+		<%= link_to admin_category_product_path(@category, product), method: :delete , remote: true, class:"delete-product" do %>
+			<i class='far fa-trash-alt' style='color: black'></i>
+		<% end %>
+  </td>
+</tr>

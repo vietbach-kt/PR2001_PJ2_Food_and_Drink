@@ -82,23 +82,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <%= link_to  admin_categories_path, class:"nav-link" do%>
+                  <i class="far fa-circle nav-icon change"></i>
+                  <p class="change">Category Tables</p>
+                <% end %>
+              </li>
+              <%# <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon change"></i>
-                  <p class="change">Simple Tables</p>
+                  <p class="change">List Categories</p>
+                  <ul class="nav nav-treeview">
+                  </ul>
                 </a>
-              </li>
+              </li> %>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <%= link_to admin_products_path, class:"nav-link" do%>
                   <i class="far fa-circle nav-icon change"></i>
-                  <p class="change">DataTables</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon change"></i>
-                  <p class="change">jsGrid</p>
-                </a>
-              </li>
+                  <p class="change">List Products</p>
+                <% end %>
+              </li> 
             </ul>
           </li>
           <li class="nav-header">EXAMPLES</li>
