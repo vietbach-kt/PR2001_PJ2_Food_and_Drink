@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   enum kind: {food: 0, drink: 1}
 
   validates :name_product, presence: true, length: { maximum: 50 }
+  validate :old_price, numericality: true
   validates :price, presence: true, numericality: true
   validates :information, presence: true, length: { maximum: 255 }
 
