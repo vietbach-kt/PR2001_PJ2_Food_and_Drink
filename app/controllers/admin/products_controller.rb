@@ -1,12 +1,14 @@
 class Admin::ProductsController < Admin::BaseController
-  before_action :get_category, except: [:index] 
-  before_action :get_product, only: [:show , :edit, :update, :destroy]
+  before_action :get_category, except: [:index, :show] 
+  before_action :get_product, only: [:update, :destroy]
   def index
     @category = Category.find_by params[:category_id]
     @products = Product.all
   end
 
-  def show; end
+  def show
+    @product = Product.find(params[:id])
+  end
 
   def new
     @product = @category.products.build
@@ -24,13 +26,15 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
 
-  def edit; end
+  def edit
+    @product = Product.find(params[:id])
+  end
   
 
   def update
     if @product.update(product_params)
       flash[:success] = 'Update successfully'
-      redirect_to admin_products_path
+      redirect_to admin_category_products_path(@category)
     else
       flash[:danger] = 'Product could not be updated'
       render :edit
@@ -50,7 +54,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def get_product
-    @product = Product.find(params[:id])
+    @product = @category.products.find(params[:id])
   end
   def get_category
     @category = Category.find params[:category_id]

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
+  root 'homepages#home'
   namespace :admin do
-    root 'homepages#index'
+    get 'home', to: 'homepages#index'
     resources :categories do 
-      resources :products, expect: [:index]
+      resources :products
     end
-    resources :products, only: [:index]
+    resources :products, only: [:index, :show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
