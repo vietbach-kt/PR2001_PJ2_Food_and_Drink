@@ -3,8 +3,8 @@
     <div class="col-md-8 col-8">
       <div class="show-image">
         <h2><%= @product.name_product %></h2>
-        <%= @product.images.each do |image| %>
-          <%= image_tag image, class:"change" %>
+        <% @product.images.each do |image| %>
+          <%= image_tag image, class:"set-size-for-product" %>
         <% end %>
       </div>
     </div>
