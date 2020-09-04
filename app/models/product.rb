@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many_attached :images
 
-  enum kind: {Food: 0, Drink: 1}
+  enum kind: {food: 0, drink: 1}
 
   validates :name_product, presence: true, length: { maximum: 50 }
   validates :price, presence: true, numericality: true
