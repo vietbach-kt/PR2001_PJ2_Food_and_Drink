@@ -102,6 +102,37 @@
               </ul>
             </div>
           </div>
+          <div class="all-tabs">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <%= link_to product_comments_path(@product), class:"nav-link active" do %>
+                  <%= @product.comments.count%> Comments 
+                <% end %>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" role="tabpanel" id="comments">
+                <div class="comment-post">
+                  <div class="post-items">
+                    <div class="img-dp">
+                      <i class="fas fa-user"></i>
+                    </div>
+                    <%= form_for [@product,@comment], remote:true do |f|%>
+                      <%= f.text_field :content, class:"post-input", placeholder:"Write a comment"%>
+                      <%= f.hidden_field :product_id, value: @product.id %>
+                      <% if signed_in?%>
+                        <%= f.hidden_field :user_id, value: @user_comment.id %>
+                      <% end %>
+                      <%= f.submit "Post comment", class:"submit-btn btn-link"%>
+                    <% end %>
+                  </div>
+                </div>
+                <% @product.comments.each do |comment|%>
+                  <%= render 'comment', comment: comment  %>
+                <% end %>   
+              </div>      
+            </div>  
+          </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-4">

@@ -1,6 +1,6 @@
 <div class="container bench">
   <h2> Generate Product </h2>
-  <%= form_for @product, url:admin_category_products_path(@category), local: true do |f| %>
+  <%= form_for @product, url:admin_category_products_path(@category)do |f| %>
   <%# [:admin, @category.products] %>
   <div class="form-group">
     <label>Name Product</label>

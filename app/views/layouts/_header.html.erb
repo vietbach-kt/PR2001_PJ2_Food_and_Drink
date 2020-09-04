@@ -19,15 +19,23 @@
                 <li><a href="#"><i class="far fa-calendar-alt"></i>Booking</a> </li>
                 <li><a href="#"><i class="far fa-bookmark"></i>Bookmarks <span class="badge badge-secondary">2</span></a></li>                    
                 <li><a href="#"><i class="fas fa-shopping-cart"></i>Food Orders <span class="badge badge-secondary">3</span></a>
-                </li>                                       
-                <li class="nav-item dropdown">
-                  <a  class="dropdown-toggle-no-caret" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i>John Doe  <i class="fas fa-caret-down"></i></a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                    <a class="dropdown-item" href="#"> My Profile</a>
-                    <a class="dropdown-item" href="setting.html"> Setting</a>
-                    <a class="dropdown-item" href="signin.html"> Logout</a>
-                  </div>
-                </li>                 
+                </li>
+                <% if signed_in? %>                                       
+                  <li class="nav-item dropdown">
+                    <a  class="dropdown-toggle-no-caret" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-circle"></i><%= current_user.name%><i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
+                      <a class="dropdown-item" href="#"> My Profile</a>
+                      <a class="dropdown-item" href="#"> Setting</a>
+                      <%= button_to logout_path,  method: "delete", class:"dropdown-item" do%>
+                        Logout <i class="fa fa-sign-out"></i> 
+                      <% end %>
+                    </div>
+                  </li>   
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to 'Login' , login_path, class:"nav-link" %>
+                  </li>
+                <% end %>              
               </ul>
             </div>
           </div>
@@ -82,7 +90,7 @@
                           </div>
                           <div class="col-md-3">    
                             <a class="dropdown-item" href="#"> Add Driver</a>
-                            <a class="dropdown-item" href="#"> Meals</a>
+                            <%= link_to "Meals", products_path, class:"dropdown-item"%>
                             <a class="dropdown-item" href="#"> Meal Detail View</a>
                             <a class="dropdown-item" href="#"> Checkout</a>
                             <a class="dropdown-item" href="#"> Bill Slip</a>
