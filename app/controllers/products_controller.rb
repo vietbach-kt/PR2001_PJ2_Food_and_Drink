@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @user_comment = current_user
+    @user = User.find_by params[:user_id] 
     @product = @category.products.find params[:id]
+    @comment = @product.comments.build
+    @comments = @product.comments
   end
   private
   def value_category

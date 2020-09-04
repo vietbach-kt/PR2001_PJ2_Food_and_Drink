@@ -41,7 +41,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_coffee.png', class:'carousel' %>
+            <%= image_tag 'brower_coffee.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Coffee More</h4>
@@ -51,7 +51,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_drink.png', class:'carousel' %>
+            <%= image_tag 'brower_drink.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Drink & Nightkise</h4>
@@ -61,7 +61,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_cake.png', class:'carousel' %>
+            <%= image_tag 'brower_cake.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Desserts & Cakes</h4>
@@ -71,7 +71,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_open.png', class:'carousel' %>
+            <%= image_tag 'brower_open.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Newly Opened</h4>
@@ -81,7 +81,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_even.png', class:'carousel' %>
+            <%= image_tag 'brower_even.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Upcoming Event</h4>
@@ -91,7 +91,7 @@
       <div class="col-md-2">
         <div class="owl-carousel">
           <div class="item">
-            <%= image_tag 'brower_gps.png', class:'carousel' %>
+            <%= image_tag 'brower_gps.png', class:'carousel-icon' %>
           </div>
           <div class="place">
             <h4>Near by</h4>
@@ -135,6 +135,43 @@
        <div class="work-text">
         <h4>Delivery</h4>
         <p>Donec et tellus sed lorem condimentum maximus. Sed tempor, leo tempus condimentum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="order-food-online">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="new-heading">
+          <h1> Order Food Online In Your Area </h1>
+        </div>
+        <div class="your-location">
+          <span><i class="fas fa-map-marker-alt"></i>New York</span>Change Location
+        </div>
+        <div class="all-items">
+          <div class="search col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <form>
+              <input class="search-location" name="search" type="search" placeholder="Enter Your Location" />
+              <div class="icon-btn">
+                <div class="cross-icon">
+                  <i class="fas fa-crosshairs"></i>
+                </div>
+                <div class="s-m-btn">
+                  <button class="search-meal-btn btn-link">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <% @products.each do |product|%>
+        <%= render 'product', product: product %>
+      <% end %>
+      <div class="meal-btn">
+        <a href="#" class="m-btn btn-link">Show All</a>
       </div>
     </div>
   </div>

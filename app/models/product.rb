@@ -2,6 +2,7 @@
 
 class Product < ApplicationRecord
   belongs_to :category
+  has_many :comments
   has_many_attached :images
 
   enum kind: {food: 0, drink: 1}
@@ -10,9 +11,9 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :information, presence: true, length: { maximum: 255 }
 
-  # def self.limit_product
-  #   order(created_at: :desc).limit(4)
-  # end
+  def self.limit_product
+    order(created_at: :desc).limit(8)
+  end
 
   # self.inheritance_column = :kind_of
 
