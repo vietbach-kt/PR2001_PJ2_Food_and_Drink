@@ -1,0 +1,26 @@
+<%= link_to new_admin_category_path, class:"btn btn-warning" do %>
+  Create category <i class='fas fa-pencil-alt'></i>
+<% end %>
+  <div class="card">
+  <div class="card-header">
+    <h2 >Categories</h2>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th> Avatar</th>
+          <th>Name Category</th>
+          <th> Action </th>
+          <th> Show Detail </th>
+        </tr>
+      </thead>
+    <tbody>  
+        <% @categories.each_with_index  do |category, index| %>
+          <%= render 'category', category: category, index: index %>
+        <% end %>
+    </tbody>
+  </table>
+  </div>
