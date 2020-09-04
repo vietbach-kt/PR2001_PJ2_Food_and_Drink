@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   def create
     if signed_in? 
       @category = Category.find_by params[:category_id]
-      @comment = @product.comments.build comment_params
+      @comment = current_user.comments.build comment_params
+      @rating.user = current_user
       respond_to  do |format|  
         if @comment.save
           format.html { redirect_to category_product_path(@category, @product)}

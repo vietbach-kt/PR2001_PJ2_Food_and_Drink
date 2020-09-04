@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   end
   resources :products, only:[:index]
   resources :products, only:[:show] do
-    resources :comments , only:[:index, :create, :destroy]
+    resources :comments , only:[:index]
   end
+  resources :users, except:[:destroy, :index] do
+    resources :comments, only:[:create, :destroy]
+  end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
