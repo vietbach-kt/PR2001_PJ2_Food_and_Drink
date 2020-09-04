@@ -5,11 +5,18 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @user_comment = current_user
     @user = User.find_by params[:user_id] 
     @product = @category.products.find params[:id]
-    @comment = @product.comments.build
     @comments = @product.comments
+    if signed_in?
+      user_comment = current_user.comments.find_by(product_id: params[:id])
+      @comment =
+        if @user_rating.present?
+          user_rating
+        else
+          current_user.comments.build(product_id: params[:id])
+        end
+    end
   end
   private
   def value_category
