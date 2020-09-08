@@ -8,8 +8,8 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: <%= Rails.application.credentials.fetch(:database_username) %>
-  password: <%= Rails.application.credentials.fetch(:database_password) %>
+  username: <%= ENV["USERNAME"] %>
+  password: <%= ENV["PASSWORD"] %>
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
