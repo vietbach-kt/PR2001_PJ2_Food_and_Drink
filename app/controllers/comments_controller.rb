@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
   def create
     if signed_in? 
       @category = Category.find_by params[:category_id]
-      @comment = current_user.comments.build comment_params
-      @rating.user = current_user
+      @comment = current_user.comments.build comment_params 
       respond_to  do |format|  
         if @comment.save
-          format.html { redirect_to category_product_path(@category, @product)}
+          format.html { redirect_to cproduct_path(@category, @product)}
           format.js
         else
+          format.html { render 'products/show' }
           format.js
         end
       end 
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   end
   private
   def get_id_product
-    @product = Product.find_by params[:product_id]
+    @product = Product.find(comment_params[:product_id])
   end
   def comment_params
     params.require(:comment).permit :content, :product_id, :user_id

@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
   create_table "toppings", force: :cascade do |t|
     t.string "name"
     t.integer "price"
+    t.integer "product_id", null: false
+    t.index ["product_id"], name: "index_toppings_on_product_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -85,4 +87,5 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "products", "categories"
+  add_foreign_key "toppings", "products"
 end

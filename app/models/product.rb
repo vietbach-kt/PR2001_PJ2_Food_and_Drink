@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   validates :price, presence: true, numericality: true
   validates :information, presence: true, length: { maximum: 255 }
 
+  delegate :name, :image, to: :category, allow_nil: true, prefix: true
+
   def self.limit_product
     order(created_at: :desc).limit(8)
   end
