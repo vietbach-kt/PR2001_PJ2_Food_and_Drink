@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
+    devise_for :users
     get 'home', to: 'homepages#index'
     resources :categories do 
       resources :products
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :products, only:[:index]
   resources :products, only:[:show] do
-    resources :comments , only:[:index]
+    resources :comments , only:[:index, :create]
   end
   resources :users, except:[:destroy, :index] do
     resources :comments, only:[:create, :destroy]

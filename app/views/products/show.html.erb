@@ -106,7 +106,7 @@
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item" role="presentation">
                 <%= link_to product_comments_path(@product), class:"nav-link active" do %>
-                  <b class="quality-comment"><%= @product.comments.count%></b>
+                  <b class="quality-comment"><%= pluralize(@comments.count, "comment")%></b>
                   <span class="text-comment"></span> 
                 <% end %>
               </li>
@@ -119,20 +119,29 @@
                       <i class="fas fa-user"></i>
                     </div>
                     <% args = (signed_in?)? [current_user,@comment] : [@product,@comment] %>
-                    <%#binding.pry%>
                     <%= form_for args, remote:true do |f|%>
                       <%= f.text_field :content, class:"post-input", placeholder:"Write a comment"%>
                       <%= f.hidden_field :product_id, value: @product.id %>
                       <% if signed_in?%>
-                        <%= f.hidden_field :user_id, value: @user_comment.id %>
+                        <%= f.hidden_field :user_id, value: current_user.id %>
                       <% end %>
                       <%= f.submit "Post comment", class:"submit-btn btn-link"%>
                     <% end %>
                   </div>
                 </div>
-                <% @product.comments.each do |comment|%>
-                  <%= render 'comment', comment: comment  %>
-                <% end %>   
+                <% if @comments.blank? %>
+                <div class="main-comments">
+                  <div class="comment-1">
+                    <h3>No comment for this product</h3>
+                  </div>
+                </div>
+                <% else %>
+                  <% @comments.each do |comment|%>
+                    <%= render 'comment', comment: comment  %>
+                  <% end %>
+                <% end %>
+                <div class="main-pagination">
+                </div>   
               </div>      
             </div>  
           </div>
@@ -207,17 +216,4 @@
       </div>
     </div>
   </div>  
-</section>          
-
-<script type="text/javascript">
-  var quality = document.getElementsByClassName("quality-comment");
-  var text =  document.getElementsByClassName("text-comment");
-  console.log(quality);
-  if( parseInt(quality) == 1)
-    {
-      text = "Comment"
-    }
-  else{
-    text = "Comments"
-  }
-</script>
+</section> 
