@@ -1,8 +1,12 @@
-  <div class="card">
+<div class="card">
   <div class="card-header">
     <h2 >Products</h2>
+    <%= link_to new_admin_category_product_path(@category), class:"btn btn-warning" do %>
+      Create Product <i class='fas fa-pencil-alt'></i>
+    <% end %>
   </div>
   <!-- /.card-header -->
+
   <div class="card-body">
     <table class="table table-hover">
       <thead>
@@ -16,10 +20,11 @@
           <th> Action </th>
         </tr>
       </thead>
-    <tbody>  
-        <%= @products.each_with_index  do |product, index| %>
-          <%= render 'product', product: product, index: index %>
+      <tbody>  
+        <% @category.products.each_with_index  do |product, index| %>
+        <%= render 'product', product: product, index: index %>
         <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   </div>
+</div>

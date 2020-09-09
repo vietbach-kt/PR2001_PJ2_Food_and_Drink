@@ -1,0 +1,43 @@
+<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+  <div class="all-meal">
+    <div class="top">
+      <%= link_to category_product_path(@category,product) do %>
+        <div class="bg-gradient"></div>
+      <% end %>
+      <div class="top-img">
+        <%= link_to category_product_path(@category,product) do %>
+          <%= image_tag product.images.first %>
+        <% end %>
+      </div>
+      <div class="logo-img">
+        <%= image_tag @category.image%>
+      </div>
+      <div class="top-text">
+        <div class="heading">
+          <h4>
+            <%= link_to category_product_path(@category,product) do %>
+              <%= product.name_product%>
+            <% end %>
+          </h4>
+        </div>
+        <div class="sub-heading">
+          <h5>
+            <%= link_to "#" do %>
+              <%= @category.name%>
+            <% end %>
+          </h5>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="bottom-text">
+        <div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : Free</div>
+        <div class="time"><i class="far fa-clock"></i>Delivery Time : 30 Min</div>
+        <div class="star">
+          Rating
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

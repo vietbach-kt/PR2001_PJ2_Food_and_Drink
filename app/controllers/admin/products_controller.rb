@@ -1,14 +1,12 @@
 class Admin::ProductsController < Admin::BaseController
-  before_action :get_category, except: [:index, :show] 
-  before_action :get_product, only: [:update, :destroy]
+  before_action :get_category, except: [:index] 
+  before_action :get_product, only: [:show , :edit, :update, :destroy]
   def index
     @category = Category.find_by params[:category_id]
     @products = Product.all
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  def show; end
 
   def new
     @product = @category.products.build
@@ -16,25 +14,22 @@ class Admin::ProductsController < Admin::BaseController
 
   def create
     @product = @category.products.build product_params
-    @product.images.attach(params[:product][:images])
     if @product.save
       flash[:success] = 'create successful product'
-      redirect_to admin_root_url
+      redirect_to admin_category_products_path(@category)
     else
       flash[:alert] = 'Product could not be created!'
       render :new
     end
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
-  
+  def edit; end
+
 
   def update
     if @product.update(product_params)
       flash[:success] = 'Update successfully'
-      redirect_to admin_category_products_path(@category)
+      redirect_to admin_products_path
     else
       flash[:danger] = 'Product could not be updated'
       render :edit
@@ -43,8 +38,9 @@ class Admin::ProductsController < Admin::BaseController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html {redirect_to admin_product_url, notice: 'Product was successfully destroyed.' }
       format.js
+      format.html {redirect_to admin_category_products_url(@category) }
+      format.json { head :no_content }
     end
   end
   private
@@ -54,10 +50,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def get_product
-    @product = @category.products.find(params[:id])
+    @product = @category.products.find params[:id]
   end
   def get_category
     @category = Category.find params[:category_id]
   end
-
 end
