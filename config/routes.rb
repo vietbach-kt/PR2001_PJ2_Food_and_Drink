@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
-    devise_for :users
     get 'home', to: 'homepages#index'
     resources :categories do 
       resources :products
     end
     resources :products, only: [:index]
+    resources :toppings
   end
+
+
   resources :categories, only: [:index, :show] do 
     resources :products, only: [:index , :show]
   end

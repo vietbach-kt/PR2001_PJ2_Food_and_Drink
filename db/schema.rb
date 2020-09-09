@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
 
   create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.integer "type"
     t.integer "price"
     t.integer "product_id", null: false
     t.index ["product_id"], name: "index_toppings_on_product_id"
