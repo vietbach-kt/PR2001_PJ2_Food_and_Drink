@@ -2,8 +2,13 @@
 
 class Product < ApplicationRecord
   belongs_to :category
+
+
   has_many :comments
+  has_many :toppings
   has_many_attached :images
+
+
 
   enum kind: {food: 0, drink: 1}
   

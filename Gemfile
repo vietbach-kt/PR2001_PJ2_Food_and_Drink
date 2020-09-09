@@ -25,6 +25,8 @@ gem "jbuilder", "~> 2.7"
 gem "aws-sdk-s3", require: false
 gem 'pry'
 gem 'devise'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views' 
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
 
