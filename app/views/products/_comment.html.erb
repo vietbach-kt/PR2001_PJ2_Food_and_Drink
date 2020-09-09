@@ -1,7 +1,7 @@
 <div class="main-comments">
   <div class="comment-1">
     <div class="user-detail-heading">
-      <b> <%= @user_comment.name %> </b>
+      <b> <%= comment.user.name %> </b>
     </div>
     <div class="reply-time">
       <p>
@@ -10,7 +10,7 @@
       </p>
     </div>
     <div class="comment-description">
-      <p><%= comment.content%></p>
+      <p id="content-comment"><%= comment.content%></p>
     </div>
   </div>
 </div>
