@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "user_id", null: false
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,17 +59,19 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["kind"], name: "index_products_on_kind"
   end
 
   create_table "toppings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "type"
+    t.integer "kind"
     t.integer "price"
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
+    t.index ["kind"], name: "index_toppings_on_kind"
     t.index ["product_id"], name: "index_toppings_on_product_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.date "birth"
     t.string "gender"

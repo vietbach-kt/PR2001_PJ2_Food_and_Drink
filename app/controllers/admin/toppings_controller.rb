@@ -22,6 +22,6 @@ class Admin::ToppingsController < Admin::BaseController
 
   private
   def topping_params
-    params.require(:category).permit :name , :type, :price 
+    params.require(:topping).permit :name , :type, :price 
   end
 end
