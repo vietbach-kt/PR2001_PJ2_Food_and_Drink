@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :products
     end
     resources :products, only: [:index]
-    resources :toppings
+    resources :toppings, except: [:update, :edit, :show]
   end
 
 
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :products, only:[:show] do
     resources :comments , only:[:index, :create]
   end
+  resources :toppings, only:[:index]
   resources :users, except:[:destroy, :index] do
     resources :comments, only:[:create, :destroy]
   end 
