@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @product = @category.products.find params[:id]
     @comment = @product.comments.build
     @comments = @product.comments.reject{|i| i.id.blank?}
+    @toppings = Topping.all
   end
   private
   def value_category

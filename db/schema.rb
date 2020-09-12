@@ -66,9 +66,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
     t.string "name"
     t.integer "kind"
     t.integer "price"
-    t.bigint "product_id", null: false
     t.index ["kind"], name: "index_toppings_on_kind"
-    t.index ["product_id"], name: "index_toppings_on_product_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,5 +88,4 @@ ActiveRecord::Schema.define(version: 2020_09_03_121048) do
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "users"
   add_foreign_key "products", "categories"
-  add_foreign_key "toppings", "products"
 end
