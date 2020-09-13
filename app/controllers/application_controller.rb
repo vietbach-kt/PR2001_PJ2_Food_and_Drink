@@ -8,4 +8,5 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit :sign_up, keys: permit_parameters_for_sign_up
         devise_parameter_sanitizer.permit :account_update, keys: permit_parameters_for_update
     end
+    include ApplicationHelper
 end

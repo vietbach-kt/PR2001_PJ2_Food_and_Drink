@@ -88,7 +88,7 @@
               <li>
                 <span class="views" data-toggle="tooltip" data-placement="top" title="Comments">
                   <i class="fas fa-comment-alt"></i>
-                  <ins>05</ins>
+                  <ins><%=@comments.count%></ins>
                 </span>
               </li>
               <li>
@@ -182,34 +182,21 @@
             <h4> Extras - <ins>(Please select any option)</ins></h4>
             <div class="non-veg">
               <h6>Non Vegetarian</h6>
-              <ul class="food-bootom">
-                <li>
-                  <p class="food-left">
-                    <input type="checkbox" id="c1" name="cb">
-                    <label for="c1">Non Veg Tikki</label>
-                  </p>
-                  <span>$2.00</span>
-                </li>
-              </ul>
-            </div>
-            <div class="non-veg j-top">
-              <h6>Vegetarian</h6>
-              <ul class="food-bootom">
-                <li>
-                  <p class="food-left">
-                    <input type="checkbox" id="c2" name="cb">
-                    <label for="c2">Double Allu Tikki</label>
-                  </p>
-                  <span>$2.00</span>
-                </li>
-                <li>
-                  <p class="food-left">
-                  <input type="checkbox" id="c3" name="cb">
-                      <label for="c3">Double Cheese</label>
-                  </p>
-                  <span>$2.00</span>
-                </li>
-              </ul>
+              <%= form_for :cart_item, url: cart_item_path do |f| %>
+                <ul class="food-bootom">
+                  <% @toppings.each do |topping| %>
+                    <li>
+                      <p class="food-left">
+                        <div class="form-group">
+                          
+                          <label for="c1"><%= topping.name%></label>
+                        </div>
+                      </p>
+                      <span><%= topping.price%></span>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
             </div>
           </div>
         </div>
