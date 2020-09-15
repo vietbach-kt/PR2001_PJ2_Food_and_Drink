@@ -171,7 +171,89 @@
         <%= render 'product', product: product %>
       <% end %>
       <div class="meal-btn">
-        <a href="#" class="m-btn btn-link">Show All</a>
+        <%= link_to "Show All", products_path, class:"m-btn btn-link"%>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="featured-restaurants">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="new-heading">
+          <h1> Featured Type Foods & Drink </h1>
+        </div>
+        <div class="bg-resto featured">
+          <div class="resto-item">
+            <div class="row">
+              <% @categories.each do |category| %>
+                <div class="col-md-4 col-sm-12">
+                <div class="resto-img">
+                  <%= image_tag(category.image) if category.image.attached?%>
+                  <div class="resto-name">
+                    <h4><%= link_to "Food Roster", category_path(@category)%></h4>
+                    <p><%= category.name %></p>
+                  </div>
+                </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="resto-location">
+                    <span><i class="fas fa-map-marker-alt"></i></span>New York City,1569
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="menu-btn">
+                    <%= link_to "View Menu", category_path(@category), class:"mn-btn btn-link"%>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 fix-margin">
+        <div class="new-heading treading-sellers">
+          <h1>Products Treading This Week</h1>
+        </div>
+        <div class="bg-resto">
+          <div class="treading-item">
+            <div class="row">
+              <div class=" col-lg-7 col-md-6">
+                <div class="resto-img">
+                  <img src="images/homepage/featured-restaurants/logo_06.jpg" alt="">
+                  <div class="resto-name">
+                    <h4><a href="#"> Steak Resto </a></h4>
+                    <p>Treading</p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-lg-5 col-md-6 ">
+                <div class="menu-btn">
+                  <a class="mn-btn btn-link" href="#">View Menu</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="treading-item">
+            <div class="row">
+              <div class="col-lg-7 col-md-6">
+                <div class="resto-img">
+                  <img src="images/homepage/featured-restaurants/logo_02.jpg" alt="">
+                  <div class="resto-name">
+                    <h4><a href="#"> Meshi Restaurant </a></h4>
+                    <p>Treading</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-5 col-md-6">
+                <div class="menu-btn">
+                  <a class="mn-btn btn-link" href="#"> View Menu</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
