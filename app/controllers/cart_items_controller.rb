@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
         end
       end
     else
-      redirect_to user_login_path
+      redirect_to login_path
     end
   end
   def update

@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2020_09_12_134030) do
   create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_product"
-    t.integer "save_price_to_cart"
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
