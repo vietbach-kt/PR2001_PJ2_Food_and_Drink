@@ -162,7 +162,9 @@
                 <span>$<%= @product.old_price%>.00</span>  
               </strike>
             <% end %>
-            <span><h4>Price: $<%= @product.price%>.00</h4></span>
+            <span data-price="<%= @product.price %>" id="product-price">
+              <h4>Price: $<%= @product.price%>.00</h4>
+            </span>
           </div>
           <div class="dt-detail">
             <ul>
@@ -188,9 +190,13 @@
                     <li>
                       <p class="food-left">
                         <%= check_box_tag "topping_ids[]", topping.id, false, id: "topping-#{topping.id}" %>
-                        <label for=<%= "topping-#{topping.id}" %>><%= topping.name%></label>
+                        <label for=<%= "topping-#{topping.id}" %>>
+                          <%= topping.name%>
+                        </label>
                       </p>
-                      <span>$<%= topping.price%></span>
+                      <span id="topping-price-<%= topping.id %>" data-topping="<%= topping.price  %>">
+                        $<%= topping.price%>
+                      </span>
                     </li>
                   <% end %>
                 </ul>
@@ -199,7 +205,7 @@
               <h4> Quantity</h4>
               <div class="input-group">
                 <%= f.number_field :quantity, in: 1..99, step:1,
-                 class:"qty-control", id:"qty_input"%>
+                 class:"qty-control", id:"qty_input", value:"1"%>
               </div>
             </div>
             <div class="total-cost">
@@ -207,7 +213,7 @@
                   <h5>Total</h5>
               </div>
               <div class="total-price">
-                  <p>$ 20 </p>
+                  <p id="tatal-product">$<%= "#{@product.price}" %></p>
               </div>
             </div>
             <div class="order-now-check">
@@ -221,3 +227,26 @@
     </div>
   </div> 
 </section> 
+
+<script>
+  $("#qty_input").change(function() {
+    const productPrice = $("#product-price").data("price");
+    var convert = parseInt($("#qty_input").val());
+    var tatal;
+    var result;
+    tatal = productPrice * convert;
+    result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
+    $("#topping-1").click(function (){
+      var toppingPrice =  $("#topping-price-1").data("topping");
+      if(this.checked){
+        tatal = productPrice * convert + toppingPrice;
+      }
+      else{
+        tatal = productPrice * convert;
+        result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
+      }
+      result = document.getElementById("tatal-product").innerHTML = "$" + tatal;    
+      $("#tatal-product").html(result);
+    })
+  });
+</script>
