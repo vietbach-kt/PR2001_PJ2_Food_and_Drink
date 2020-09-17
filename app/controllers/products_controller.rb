@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @comment = @product.comments.build
     @comments = @product.comments.reject{|i| i.id.blank?}
     @toppings = Topping.all
+    @cart_item = @product.cart_items.build
   end
   private
   def value_category

@@ -1,0 +1,39 @@
+<% if @cart_items.blank? %>
+    <h3 style="text-align: center;">You haven't product in cart </h3>
+<% else %>
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 10px;">My Cart</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>
+          <th>Product name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td> <%= image_tag(cart_item.product.images.first)%> </td>
+            <td>
+              <%= cart_item.product.name_product %>
+            </td>
+            <td>
+              <%= form_for cart_item, class:"form-group", remote:true do |f| %>
+                <div class="create-cart">
+                  <%= f.number_field :quantity , in: 1..99, step:1, class:"form-control quantity" , value:"#{cart_item.quantity}"%>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              $<%= cart_item.total_product%>
+            </td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>    

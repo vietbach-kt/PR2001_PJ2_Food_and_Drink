@@ -45,8 +45,7 @@ class CartItemsController < ApplicationController
   end
   private
   def cart_item_params
-      params.require(:cart_item).permit :quantity, :total_product,
-       :save_price_to_cart, :product_id, :category_id
+      params.require(:cart_item).permit :quantity, :total_product, :product_id, :category_id
   end
   def get_current_cart
     @cart = current_cart

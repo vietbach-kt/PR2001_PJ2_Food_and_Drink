@@ -180,7 +180,7 @@
               </li>
             </ul>
           </div>
-          <%= form_for @product.cart_items.build, remote:true do |f| %>
+          <%= form_for @cart_item, remote:true do |f| %>
             <div class="Extra-option">
               <h4> Extras - <ins>(Please select any option)</ins></h4>
               <div class="non-veg j-top">
@@ -213,7 +213,9 @@
                   <h5>Total</h5>
               </div>
               <div class="total-price">
-                  <p id="tatal-product">$<%= "#{@product.price}" %></p>
+                  <p id="tatal-product">$<%= "#{@product.price}" %>
+                     <%= f.hidden_field :total_product, value: @product.price %>
+                  </p>
               </div>
             </div>
             <div class="order-now-check">

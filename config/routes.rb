@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :users, except:[:destroy, :index] do
     resources :comments, only:[:create, :destroy]
   end 
-  resources :carts
+  resources :carts, only:[:create, :index]
   resources :cart_items, only:[:create, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
