@@ -194,7 +194,7 @@
                           <%= topping.name%>
                         </label>
                       </p>
-                      <span id="topping-price-<%= topping.id %>" data-topping="<%= topping.price  %>">
+                      <span id="topping-price7-<%= topping.id %>" data-topping="<%= topping.price  %>">
                         $<%= topping.price%>
                       </span>
                     </li>
@@ -214,11 +214,11 @@
               </div>
               <div class="total-price">
                   <p id="tatal-product">$<%= "#{@product.price}" %>
-                     <%= f.hidden_field :total_product, value: @product.price %>
                   </p>
               </div>
             </div>
             <div class="order-now-check">
+              <%= hidden_field_tag :cart_id, value: @product.id %>
               <%= f.hidden_field :product_id, value: @product.id %>
               <%= f.hidden_field :category_id, value: @category.id %>
               <%= f.submit "Order Now", class:"on-btn btn-link" %>
@@ -241,7 +241,7 @@
     $("#topping-1").click(function (){
       var toppingPrice =  $("#topping-price-1").data("topping");
       if(this.checked){
-        tatal = productPrice * convert + toppingPrice;
+        tatal =  toppingPrice + productPrice * convert;
       }
       else{
         tatal = productPrice * convert;

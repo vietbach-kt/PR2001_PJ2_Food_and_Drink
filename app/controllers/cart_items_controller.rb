@@ -1,31 +1,35 @@
 class CartItemsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate
   before_action :get_current_cart
   def create
-    if signed_in?
-      @cart_item = @cart.cart_items.build cart_item_params
-      respond_to do |format|
-        if @cart_item.save
-          format.html{ redirect_to cart_path(current_cart.id)}
-          format.js
-        else
-          format.html { redirect_to product_path(product_cart_params[:product_id])}
-          format.js
-        end
-      end
+    @cart_item = @cart.cart_items.find_by product_id: cart_item_params[:product_id]
+    if @cart_item 
+      tatal_quantity = cart_item_params[:quantity].to_i + @cart_item.quantity
+      @cart_item.assign_attributes quantity: tatal_quantity ,
+        total_product: tatal_quantity * @cart_item.product.price
     else
-      redirect_to login_path
+      @cart_item = @cart.cart_items.build cart_item_params
+      @cart_item.total_product = @cart_item.product.price * cart_item_params[:quantity].to_i  #@cart_item.quantity
+    end
+    respond_to do |format|
+      if @cart_item.save
+        format.html{ redirect_to carts_path}
+        format.js
+      else
+        format.html { redirect_to carts_path }
+        format.js
+      end
     end
   end
   def update
     @cart_item = CartItem.find(params[:id])
     respond_to do |format|
-      if @pcart_item.update_attributes(cart_item_params)
-        @cart = @cart_item.cart
-        @cart_item = @cart_item.cart.cart_items
-        format.html { redirect_to cart_path(current_cart.id), notice: 'Update product in cart successfull.' }
+      if @cart_item.update(cart_item_params)
+        format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
-        format.html { redirect_to cart_path(current_cart.id), notice: 'Update product in cart failed.' }
+        format.html { redirect_to carts_path, notice: 'Update product in cart failed.' }
         format.js
       end
     end
@@ -35,19 +39,22 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       if @cart_item.destroy
         @cart_item = current_cart.product_carts
-        format.html { redirect_to cart_path(current_cart.id), notice: 'Update product in cart successfull.' }
+        format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
-        format.html { redirect_to cart_path(current_cart.id), notice: 'Update product in cart failed.' }
+        format.html { redirect_to carts_path, notice: 'Update product in cart failed.' }
         format.js
       end
     end
   end
   private
   def cart_item_params
-      params.require(:cart_item).permit :quantity, :total_product, :product_id, :category_id
+      params.require(:cart_item).permit :quantity ,:product_id, :category_id
   end
   def get_current_cart
     @cart = current_cart
+  end
+  def authenticate
+    redirect_to login_path unless signed_in?
   end
 end

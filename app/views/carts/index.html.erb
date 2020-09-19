@@ -6,7 +6,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>
+          <th></th>
           <th>Product name</th>
           <th>Quantity</th>
           <th>Price</th>
@@ -18,22 +18,54 @@
           <tr>
             <td> <%= image_tag(cart_item.product.images.first)%> </td>
             <td>
-              <%= cart_item.product.name_product %>
+              <%= link_to cart_item.product.name_product, category_product_path(cart_item.product.category, cart_item.product) %>
             </td>
-            <td>
-              <%= form_for cart_item, class:"form-group", remote:true do |f| %>
-                <div class="create-cart">
-                  <%= f.number_field :quantity , in: 1..99, step:1, class:"form-control quantity" , value:"#{cart_item.quantity}"%>
-                </div>
-              <% end %>
+            <td class="buying">
+              <div class="create-cart">
+                <%= number_field_tag :quantity, cart_item.quantity , in: 1..99, step:1, 
+                 class:"form-control quantity", id:"cart_item_quantity-#{cart_item.id}"%>
+              </div>
+              <script>
+                $("#cart_item_quantity-"+ <%=cart_item.id%>).change(function (){
+                  var quantity = $(this).val();
+                  $.ajax({
+                    type: "patch",
+                    url: "<%= cart_item_path(cart_item) %>",
+                    data: {cart_item: {quantity: quantity}} ,
+                    dataType: "script",
+                  })
+                })
+              </script>
             </td>
-            <td>
+            <td id="cart-price-<%=cart_item.id%>" data-pricePr="<%=@product.price%>">
               $<%= cart_item.total_product%>
             </td>
-            <td></td>
+            <td>
+            <%= link_to '#', remote:true do%>
+              <%= image_tag 'remove.png',style:'width:20px'%>
+            <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <hr/>
+    <br/>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h4> Total the Bill: </h4> 
+        </div>
+        <div class="col-md-3">
+          <h5>$<%= current_cart.total_amount.sum %></h5>
+          <div class="order">
+            <%= form_for current_cart, url: new_order_path, method: :get,  class:"form-group" do |f| %>
+              <%= f.hidden_field :cart_id, value: current_cart.id %>
+              <%= f.submit "Order now", class:"btn btn-origin" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>    
+<% end %>  
