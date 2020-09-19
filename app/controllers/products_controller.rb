@@ -7,8 +7,9 @@ class ProductsController < ApplicationController
   def show
     @product = @category.products.find params[:id]
     @comment = @product.comments.build
-    @comments = @product.comments.reject{|i| i.id.blank?}
+    @comments = current_user.comments.reject{|i| i.id.blank?}
     @toppings = Topping.all
+    @topping = Topping.find_by params[:topping_id]
     @cart_item = @product.cart_items.build
   end
   private

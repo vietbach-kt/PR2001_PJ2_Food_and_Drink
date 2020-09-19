@@ -506,18 +506,6 @@ and something more appropriate for display headings */
     .topbar .list-inline a {
         color: #847577;
     }
-    .badge {
-        color: #000000;
-        border-radius: 50%;
-        padding: 0px 9px 21px 3px;
-        font-size: 12px;
-        font-weight: 500;
-        margin-bottom: 2px;
-        background: #ffa803;
-        width: 13px;
-        height: 13px;
-        text-align: center;
-    }
     .nav-item {
         -webkit-transition: hide;
     }
@@ -7008,19 +6996,6 @@ and something more appropriate for display headings */
         background: #db382a;
     }
     /*** Tab Notification ***/
-    .n-badge {
-        color: #fff;
-        border-radius: 3px;
-        font-size: 12px;
-        font-weight: 500;
-        margin-bottom: 2px;
-        background: #ffa803;
-        width: 18px;
-        height: 18px;
-        text-align: center;
-        float: right;
-        line-height: 19px;
-    }
     .noti-all {
         float: left;
         width: 100%;

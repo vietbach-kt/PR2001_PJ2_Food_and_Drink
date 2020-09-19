@@ -14,6 +14,11 @@ class CartItemsController < ApplicationController
     end
     respond_to do |format|
       if @cart_item.save
+        if @cart.save
+          save_cart(@cart)
+        else
+          format.html {redirect_to root_path}
+        end
         format.html{ redirect_to carts_path}
         format.js
       else
@@ -25,7 +30,9 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     respond_to do |format|
-      if @cart_item.update(cart_item_params)
+      if @cart_item.update_attributes(cart_item_params)
+        @cart = @cart_item.cart
+        @cart_items = @cart_item.cart.cart_items
         format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
@@ -35,10 +42,10 @@ class CartItemsController < ApplicationController
     end
   end
   def destroy
-    @cart_item = @cart.cart_items.find(params[:id])
+    @cart_item = @cart.cart_items.find_by params[:id]
     respond_to do |format|
       if @cart_item.destroy
-        @cart_item = current_cart.product_carts
+        @cart_item = current_cart.cart_items
         format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
@@ -49,7 +56,7 @@ class CartItemsController < ApplicationController
   end
   private
   def cart_item_params
-      params.require(:cart_item).permit :quantity ,:product_id, :category_id
+      params.require(:cart_item).permit :quantity ,:product_id, :category_id,:total_product
   end
   def get_current_cart
     @cart = current_cart

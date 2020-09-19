@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     if signed_in? 
       @category = Category.find_by params[:category_id]
-      @comment = current_user.comments.build comment_params 
+      @comment = current_user.comments..build comment_params 
       respond_to  do |format|  
         if @comment.save
           format.html { redirect_to cproduct_path(@category, @product)}
@@ -16,8 +16,6 @@ class CommentsController < ApplicationController
     else
       redirect_to login_path
     end
-  end
-  def destroy  
   end
   private
   def get_id_product

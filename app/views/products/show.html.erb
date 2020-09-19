@@ -189,12 +189,12 @@
                   <% @toppings.each do |topping| %>
                     <li>
                       <p class="food-left">
-                        <%= check_box_tag "topping_ids[]", topping.id, false, id: "topping-#{topping.id}" %>
+                        <%= check_box_tag "topping_ids[]", topping.id, false, class:"form-check-input" , id: "topping-#{topping.id}" %>
                         <label for=<%= "topping-#{topping.id}" %>>
                           <%= topping.name%>
                         </label>
                       </p>
-                      <span id="topping-price7-<%= topping.id %>" data-topping="<%= topping.price  %>">
+                      <span id="topping-price-<%= topping.id %>" data-topping="<%= topping.price  %>">
                         $<%= topping.price%>
                       </span>
                     </li>
@@ -218,7 +218,7 @@
               </div>
             </div>
             <div class="order-now-check">
-              <%= hidden_field_tag :cart_id, value: @product.id %>
+              <%= hidden_field_tag :cart_id, current_cart.id %>
               <%= f.hidden_field :product_id, value: @product.id %>
               <%= f.hidden_field :category_id, value: @category.id %>
               <%= f.submit "Order Now", class:"on-btn btn-link" %>
@@ -238,7 +238,8 @@
     var result;
     tatal = productPrice * convert;
     result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
-    $("#topping-1").click(function (){
+    $("#topping-"+"<%=@topping.id%>").click(function (){
+      var checkInput = $(this).val();
       var toppingPrice =  $("#topping-price-1").data("topping");
       if(this.checked){
         tatal =  toppingPrice + productPrice * convert;

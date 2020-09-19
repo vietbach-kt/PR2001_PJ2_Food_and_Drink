@@ -41,7 +41,7 @@
               $<%= cart_item.total_product%>
             </td>
             <td>
-            <%= link_to '#', remote:true do%>
+            <%= link_to cart_item_path(current_cart.id), remote:true, method: :delete, id:"delete-cart-item" do%>
               <%= image_tag 'remove.png',style:'width:20px'%>
             <% end %>
             </td>

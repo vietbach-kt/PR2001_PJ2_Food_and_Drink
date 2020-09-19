@@ -8,12 +8,15 @@ module ApplicationHelper
     end
   end
   
+  def save_cart(cart)
+    session[:cart_id] = cart.id
+  end
+  
   def current_cart
-    cart = Cart.initial.where(user_id: current_user.id).last
-    if cart
-      cart    
+    if !session[:cart_id].nil?
+      Cart.find(session[:cart_id])     
     else
-      Cart.initial.new user_id: current_user.id
+      Cart.new
     end
   end
   
