@@ -18,6 +18,7 @@
           <tr>
             <td> <%= image_tag(cart_item.product.images.first)%> </td>
             <td>
+<<<<<<< HEAD
               <%= link_to cart_item.product.name_product, category_product_path(cart_item.product.category, cart_item.product) %>
             </td>
             <td class="buying">
@@ -45,10 +46,26 @@
               <%= image_tag 'remove.png',style:'width:20px'%>
             <% end %>
             </td>
+=======
+              <%= cart_item.product.name_product %>
+            </td>
+            <td>
+              <%= form_for cart_item, class:"form-group", remote:true do |f| %>
+                <div class="create-cart">
+                  <%= f.number_field :quantity , in: 1..99, step:1, class:"form-control quantity" , value:"#{cart_item.quantity}"%>
+                </div>
+              <% end %>
+            </td>
+            <td>
+              $<%= cart_item.total_product%>
+            </td>
+            <td></td>
+>>>>>>> df2ad43... build cart (18/9 -1)
           </tr>
         <% end %>
       </tbody>
     </table>
+<<<<<<< HEAD
     <hr/>
     <br/>
     <div class="container">
@@ -69,3 +86,7 @@
     </div>
   </div>
 <% end %>  
+=======
+  </div>
+<% end %>    
+>>>>>>> df2ad43... build cart (18/9 -1)

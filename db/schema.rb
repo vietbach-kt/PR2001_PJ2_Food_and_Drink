@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 2020_09_12_134030) do
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> df2ad43... build cart (18/9 -1)
     t.integer "save_price_to_cart_item"
     t.integer "category_id"
 =======
@@ -68,10 +71,14 @@ ActiveRecord::Schema.define(version: 2020_09_12_134030) do
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "total_amount"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.bigint "user_id"
 =======
     t.bigint "user_id", null: false
 >>>>>>> 218dcaa... bulid 13/9
+=======
+    t.bigint "user_id"
+>>>>>>> df2ad43... build cart (18/9 -1)
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
