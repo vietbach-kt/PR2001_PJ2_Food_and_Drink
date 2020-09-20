@@ -45,11 +45,14 @@ ActiveRecord::Schema.define(version: 2020_09_12_134030) do
     t.integer "quantity"
     t.integer "total_product"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.integer "save_price_to_cart_item"
     t.integer "category_id"
 =======
     t.integer "save_price_to_cart"
 >>>>>>> 218dcaa... bulid 13/9
+=======
+>>>>>>> 67083e6... build 15/09
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false

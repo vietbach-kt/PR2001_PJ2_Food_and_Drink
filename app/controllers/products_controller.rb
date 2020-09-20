@@ -14,6 +14,6 @@ class ProductsController < ApplicationController
   end
   private
   def value_category
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find (params[:category_id])
   end
 end
