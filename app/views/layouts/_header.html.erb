@@ -17,8 +17,14 @@
             <div class="topbar-right text-center text-md-right">
               <ul class="list-inline">
                 <li><a href="#"><i class="far fa-calendar-alt"></i>Booking</a> </li>
-                <li><a href="#"><i class="far fa-bookmark"></i>Bookmarks <span class="badge badge-secondary">2</span></a></li>                    
-                <li><a href="#"><i class="fas fa-shopping-cart"></i>Food Orders <span class="badge badge-pill badge-warning">3</span></a>
+                <li><a href="#"><i class="far fa-bookmark"></i>Bookmarks </a></li>                    
+                <li id="quantity-cart-item">
+                  <%= link_to carts_path do %>
+                    <i class="fas fa-shopping-cart"></i>
+                     Food Orders <span class="badge badge-pill badge-warning">
+                      <%= render 'products/cart_item' %>
+                    </span>
+                  <% end %>
                 </li>
                 <% if signed_in? %>                                       
                   <li class="nav-item dropdown">
@@ -64,7 +70,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto nav-text">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home </a>
+                      <%= link_to "HOME", root_path, class:"nav-link"%>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">How To Orders?</a>

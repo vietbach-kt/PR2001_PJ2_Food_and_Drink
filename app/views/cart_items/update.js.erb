@@ -1,0 +1,2 @@
+$("#quantity-cart-item").html("<%= j render 'products/cart_item'%>")
+$("#cart-price-"+"<%= @cart_item.id%>").html("$<%= @cart_item.total_product %>")

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_17_071026) do
+=======
+ActiveRecord::Schema.define(version: 2020_09_19_172622) do
+>>>>>>> master
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_071026) do
   create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_product"
+    t.integer "save_price_to_cart_item"
     t.integer "category_id"
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
@@ -47,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_071026) do
 
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "total_amount"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
