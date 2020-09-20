@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_09_17_071026) do
 =======
 ActiveRecord::Schema.define(version: 2020_09_19_172622) do
 >>>>>>> master
+=======
+ActiveRecord::Schema.define(version: 2020_09_12_134030) do
+>>>>>>> 218dcaa... bulid 13/9
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -40,8 +44,12 @@ ActiveRecord::Schema.define(version: 2020_09_19_172622) do
   create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_product"
+<<<<<<< HEAD
     t.integer "save_price_to_cart_item"
     t.integer "category_id"
+=======
+    t.integer "save_price_to_cart"
+>>>>>>> 218dcaa... bulid 13/9
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -52,7 +60,11 @@ ActiveRecord::Schema.define(version: 2020_09_19_172622) do
 
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "total_amount"
+<<<<<<< HEAD
     t.bigint "user_id"
+=======
+    t.bigint "user_id", null: false
+>>>>>>> 218dcaa... bulid 13/9
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
