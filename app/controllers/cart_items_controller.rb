@@ -33,6 +33,7 @@ class CartItemsController < ApplicationController
       if @cart_item.update_attributes(cart_item_params)
         @cart = @cart_item.cart
         @cart_items = @cart_item.cart.cart_items
+        test = 3
         format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else

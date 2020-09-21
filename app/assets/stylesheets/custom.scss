@@ -61,6 +61,59 @@
   .quantity{
     width: 63px !important;
   }
+  .information-user{
+    border: 1.5px solid #d4d4d4;
+    margin-bottom: 17px;
+  }
+  .tital{
+    padding: 20px;
+  }
+  .public-1{
+    margin: 4px;
+  }
+  .order-sumary{
+    border: 1px solid #d4d4d4;
+    margin-bottom: 17px;
+  }
+  .cart{
+    padding: 20px;
+  }
+  .cart .public{
+    padding: 17px;
+  }
+  .col-md-9 b{
+    font-size: 13px;
+  }
+  .col-md-3 p{
+    text-align: center;
+    font-size: 13px;
+  }
+  .display-payment{
+    border: 1px solid #d4d4d4;
+    height: 18em;
+    width: 54em;
+    max-height: 20em;
+  }
+  .position-static{
+    transform: scale(1.5);
+    margin: 18px;
+    margin-right: 4px;
+  }
+  .atm{
+    display: none;
+  }
+  .payment-online{
+    list-style-type: none;
+  }
+  .alert-info{
+    padding: 9px;
+    margin-top: 1em;
+    width: 26em;
+  }
+  .btn-danger{
+    height: 3em;
+    width: 19em;
+  }
   footer{
     margin-top: 2em;
   }

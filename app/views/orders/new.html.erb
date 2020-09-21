@@ -1,41 +1,102 @@
 <div class="container">
-  <h3>ORDER</h3>
   <%= form_for @order do |f| %>
-    <table class="table table-hover table-order">
-      <tbody>
-        <tr>
-          <td colspan="2">User name</td>
-          <td class="content-db"><%=current_user.name%></td>
-        </tr>
-        <tr>
-          <td colspan="2">Code order</td>
-          <td class="content-db"><%=current_cart.id%></td>
-        </tr>
-        <tr>
-          <td colspan="2">List product</td>
-          <td class="content-db">
-             <% @cart_items.each do |cart_item| %>
-                <%= cart_item.product.name_product + ',' %>
-             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2">Total bill</td>
-          <td class="content-db">$<%= current_cart.total_amount.sum %></td>
-        </tr>
-      </tbody>
-    </table>
-    <h4> User confirmation </h4>
-    <%= f.hidden_field :user_id, value:current_user.id %>
-    <%= f.hidden_field :cart_id , value:current_cart.id %>
-    <div class="form-group"> 
-      <%= f.label :Address%>
-      <%= f.text_field :address , placeholder:"Enter adress", class:"form-control" , :required => true%>
+    <div class="row">
+        <div class="col-sm-12">
+          <h3>1. Chọn hình thức thanh toán </h3>
+        </div>
+        <div class="col-sm-9">
+          <div class="row display-payment">
+            <div class="col-md-4">
+              <div class="form-check">
+                <%= collection_radio_buttons(:order, :payments, Order.payments, :first, :first)%>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <ul class="atm">
+                <li class="payment-online">
+                  <%= image_tag 'BIDV.jpg', style: 'width:5em;' %>
+                </li>
+                <li class="payment-online">
+                  <%= image_tag 'VCB.jpg', style: 'width:5em;' %>
+                </li>
+                <li class="payment-online">
+                  <%= image_tag 'SCB.jpg', style: 'width:5em;' %>
+                </li>
+                <li class="payment-online">
+                  <%= image_tag 'VTB.jpg', style: 'width:5em;' %>
+                </li>
+                <li class="payment-online">
+                  <%= image_tag 'VCB.jpg', style: 'width:5em;' %>
+                </li>
+             </ul>
+            </div>
+          </div>
+          <div class="order-now" style="margin-top: 2em;">
+            <%= f.hidden_field :cart_id, value: current_cart.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit "ORDER NOW", class:"btn btn-danger"%>
+          </div>
+        </div>
+        <div class="col-sm-3">
+        <div class="information-user">
+          <div class="tital"> 
+            <h5> Address </h5>
+            <hr class="public-1">
+            <div class="address">
+              <b><%= current_user.name%></b>
+              <%= f.text_field :address , placeholder:"Enter adress", 
+               class:"form-control" , :required => true%>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="order-sumary">
+          <div class="tital">
+            <h5>Cart(<span><%=current_cart.products.count%> products</span>)</h5>
+            <hr class="public-1">
+          </div>
+          <div class="cart">
+            <div class="row public">
+              <% @cart_items.each do |cart_item| %>
+                <div class="col-md-9">
+                    <b><%= cart_item.quantity %>x <span><%=cart_item.product.name_product%></span></b>
+                </div>
+                <div class="col-md-3">
+                  <p>$<%=cart_item.total_product%> </p>
+                </div>
+                <hr class="public-1">
+              <% end %>
+            </div>
+            <hr class="public-1">
+            <div class="row public">
+              <div class="col-md-9">
+                <b>Provisional total:</b>
+                <p>Transport costs: </p>
+              </div>
+              <div class="col-md-3">
+                  <p>$<%= current_cart.total_amount.sum %></p>
+                  <p>$0</p>
+              </div>
+            </div>
+            <hr class="public-1">
+            <div class="row public">
+              <div class="col-md-9">
+                <b>Total order:</b>
+              </div>
+              <div class="col-md-3">
+                <h3 style="color:red;">$<%= current_cart.total_amount.sum %>.00</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group"> 
-      <%= f.label :Phone_number %>
-      <%= f.text_field :phone_number , placeholder:"Enter phonenumber", class:"form-control" ,:required => true %>
-    </div>
-    <%= f.submit "Finish order", class: "btn btn-primary" %>
   <% end %>
 </div>
+<script>
+  $(document).ready(function(){
+  $("#order_payments_ship_code").click(function(){
+    $(".atm").toggle(1000);
+    });
+  });
+</script>

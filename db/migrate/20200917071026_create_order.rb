@@ -3,7 +3,7 @@ class CreateOrder < ActiveRecord::Migration[6.0]
     create_table :orders do |t|
       t.string :address
       t.integer :phone_number
-      t.integer :payment
+      t.integer :payments
       t.integer :save_price_to_order
       t.references(:user, null: false, type: :bigint)
       t.references(:cart, null: false, type: :bigint)

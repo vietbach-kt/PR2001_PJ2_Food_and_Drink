@@ -47,14 +47,14 @@
         <div class="resto-meal-dt">
           <div class="resto-detail">
             <div class="resto-picy">
-              <%= link_to category_path(@category) do %>
-              <%= image_tag @category.image , class:"fix-size-category" %>
+              <%= link_to category_path(@product.category.id) do %>
+              <%= image_tag @product.category.image , class:"fix-size-category" %>
               <% end %>
             </div>
           </div> 
           <div class="name-location">
-            <%= link_to category_path(@category) do %>
-            <h1><%= @category.name %></h1>
+            <%= link_to category_path(@product.category.id) do %>
+            <h1><%= @product.category.name %></h1>
             <% end %>
             <div class="right-side-btns">
           <div class="bagde-dt">
@@ -198,6 +198,29 @@
                         $<%= topping.price%>
                       </span>
                     </li>
+                    <script>
+                    $("#qty_input").change(function() {
+                      const productPrice = $("#product-price").data("price");
+                      var convert = parseInt($("#qty_input").val());
+                      var tatal;
+                      var result;
+                      tatal = productPrice * convert;
+                      result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
+                      $("#topping-<%=topping.id%>").click(function (){
+                        var checkInput = $(this).val();
+                        var toppingPrice =  $("#topping-price-1").data("topping");
+                        if(this.checked){
+                          tatal =  toppingPrice + productPrice * convert;
+                        }
+                        else{
+                          tatal = productPrice * convert;
+                          result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
+                        }
+                        result = document.getElementById("tatal-product").innerHTML = "$" + tatal;    
+                        $("#tatal-product").html(result);
+                      })
+                    });
+                  </script>
                   <% end %>
                 </ul>
               </div>
@@ -220,36 +243,18 @@
             <div class="order-now-check">
               <%= hidden_field_tag :cart_id, current_cart.id %>
               <%= f.hidden_field :product_id, value: @product.id %>
-              <%= f.hidden_field :category_id, value: @category.id %>
-              <%= f.submit "Order Now", class:"on-btn btn-link" %>
-            </div>
+              <%= f.submit "Order Now", class:"on-btn btn-link add-cart" %>
+            <span class="alert alert-info" style="display:none;" >
+               Add cart succsessed
+            </span>
           <% end %>
         </div>
       </div>
     </div>
   </div> 
 </section> 
-
 <script>
-  $("#qty_input").change(function() {
-    const productPrice = $("#product-price").data("price");
-    var convert = parseInt($("#qty_input").val());
-    var tatal;
-    var result;
-    tatal = productPrice * convert;
-    result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
-    $("#topping-"+"<%=@topping.id%>").click(function (){
-      var checkInput = $(this).val();
-      var toppingPrice =  $("#topping-price-1").data("topping");
-      if(this.checked){
-        tatal =  toppingPrice + productPrice * convert;
-      }
-      else{
-        tatal = productPrice * convert;
-        result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
-      }
-      result = document.getElementById("tatal-product").innerHTML = "$" + tatal;    
-      $("#tatal-product").html(result);
-    })
+  $(".add-cart").click(function(){
+    $(".alert-info").show().fadeOut(1000);
   });
 </script>
