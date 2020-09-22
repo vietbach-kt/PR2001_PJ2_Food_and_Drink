@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   resources :carts, only:[:create, :index]
   resources :cart_items, only:[:create, :update, :destroy]
   resources :orders ,except:[:edit, :update]
+  resources :users, only:[:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
