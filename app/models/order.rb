@@ -1,8 +1,20 @@
 class Order < ApplicationRecord
-    has_one :carts ,dependent: :destroy
+    belongs_to :cart, optional: true, dependent: :destroy
+
     belongs_to :user
+    
+    enum status: [:delivered, :cancel]
     enum payment: {ship_code: 0, online: 1}
-    def save_price_to_order
+
+    class << self
+      def generate_order_code
+        code = SecureRandom.urlsafe_base64(10)
         
+        while Order.find_by(order_code: code)
+          code = SecureRandom.urlsafe_base64(10)
+        end
+        
+        code
+      end
     end
 end

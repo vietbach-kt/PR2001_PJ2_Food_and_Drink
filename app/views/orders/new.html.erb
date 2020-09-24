@@ -7,8 +7,9 @@
         <div class="col-sm-9">
           <div class="row display-payment">
             <div class="col-md-4">
-              <div class="form-check">
-                <%= collection_radio_buttons(:order, :payments, Order.payments, :first, :first)%>
+              <div class="form-group" style="margin-top: 1em">
+                <label>Option payment</label>
+                <%= f.select :payments, Order.payments.keys ,{}, class: 'form-control'%>
               </div>
             </div>
             <div class="col-md-8">
@@ -46,6 +47,8 @@
               <b><%= current_user.name%></b>
               <%= f.text_field :address , placeholder:"Enter adress", 
                class:"form-control" , :required => true%>
+               <%= f.text_field :phone_number , placeholder:"Enter phone number", 
+               class:"form-control", style:"margin-top:5px;" , :required => true%>
               <span></span>
             </div>
           </div>
@@ -74,7 +77,7 @@
                 <p>Transport costs: </p>
               </div>
               <div class="col-md-3">
-                  <p>$<%= current_cart.total_amount.sum %></p>
+                  <p>$<%= current_cart.total_amount%></p>
                   <p>$0</p>
               </div>
             </div>
@@ -84,7 +87,7 @@
                 <b>Total order:</b>
               </div>
               <div class="col-md-3">
-                <h3 style="color:red;">$<%= current_cart.total_amount.sum %>.00</h3>
+                <h3 style="color:red;">$<%= current_cart.total_amount %>.00</h3>
               </div>
             </div>
           </div>

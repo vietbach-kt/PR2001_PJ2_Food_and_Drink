@@ -241,9 +241,8 @@
               </div>
             </div>
             <div class="order-now-check">
-              <%= hidden_field_tag :cart_id, current_cart.id %>
               <%= f.hidden_field :product_id, value: @product.id %>
-              <%= f.submit "Order Now", class:"on-btn btn-link add-cart" %>
+              <%= f.submit "Add Cart", class:"on-btn btn-link add-cart" %>
             <span class="alert alert-info" style="display:none;" >
                Add cart succsessed
             </span>

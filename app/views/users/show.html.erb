@@ -131,10 +131,15 @@
 														<tbody>
 															<% @orders.each do |order|%>
 																<tr>
-																	<td><%= order.id %></td>
-																	<td><%= order.created_at%></td>
-																	<% binding.pry%>
-																	<td><%= order.cart.products.name%></td>
+																	<td><%= order.order_code %></td>
+																	<td><%= order.created_at.to_date%></td>
+                                  <td>
+                                    <% order.cart.products.each do |product| %>
+																	    <%= product.name_product %>
+                                    <% end %>
+                                  </td>
+                                  <td>$<%= order.save_price_to_order %>.00</td>
+                                  <td><%= order.status %></td>
 																</tr>
 															<% end %>
 														</tbody>

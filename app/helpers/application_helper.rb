@@ -19,5 +19,4 @@ module ApplicationHelper
       Cart.new
     end
   end
-  
 end

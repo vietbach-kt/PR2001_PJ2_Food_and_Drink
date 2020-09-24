@@ -2,7 +2,6 @@ class Admin::ProductsController < Admin::BaseController
   before_action :get_category, except: [:index] 
   before_action :get_product, only: [:show , :edit, :update, :destroy]
   def index
-    @category = Category.find_by params[:category_id]
     @products = Product.all
   end
 
@@ -13,7 +12,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-    @product = @category.products.build product_params
+    @product = @category.products.build product_params_creates
     if @product.save
       flash[:success] = 'create successful product'
       redirect_to admin_category_products_path(@category)
@@ -27,7 +26,7 @@ class Admin::ProductsController < Admin::BaseController
 
 
   def update
-    if @product.update(product_params)
+    if @product.update(product_params_update)
       flash[:success] = 'Update successfully'
       redirect_to admin_products_path
     else
@@ -44,7 +43,11 @@ class Admin::ProductsController < Admin::BaseController
     end
   end
   private
-  def product_params
+  def product_params_create
+    params.require(:product).permit :name_product, :information
+     ,:price, :kind, :category_id, images: []
+  end
+  def product_params_update
     params.require(:product).permit :name_product, :information, 
      :old_price ,:price, :kind, :category_id, images: []
   end
