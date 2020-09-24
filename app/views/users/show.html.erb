@@ -53,25 +53,25 @@
 											<li>
 												<div class="dp-detail">
 													<h6>Ful Name</h6>
-													<p>John Doe</p>
+													<p><%= current_user.name%></p>
 												</div>
 											</li>
 											<li>
 												<div class="dp-detail">
-													<h6>Location</h6>
-													<p>Hill District, Sydney, Australia</p>
+													<h6>Email</h6>
+													<p><%= current_user.email%></p>
 												</div>
 											</li>
 											<li>
 												<div class="dp-detail">
-													<h6>Mobile Number</h6>
-													<p>+ 2 987 654 3210</p>
+													<h6>Birth</h6>
+													<p><%=current_user.birth%></p>
 												</div>
 											</li>
 											<li>
 												<div class="dp-detail">
-													<h6>Email Address</h6>
-													<p>Johndoe@gmail.com</p>
+													<h6>Gender</h6>
+													<p><%= current_user.gender %></p>
 												</div>
 											</li>
 											<li>
