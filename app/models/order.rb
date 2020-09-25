@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 
     belongs_to :user
     
-    enum status: [:delivered, :cancel]
+    enum status: [ :confirm, :cancel, :delivered ]
     enum payment: {ship_code: 0, online: 1}
 
     class << self

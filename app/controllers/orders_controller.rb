@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  layout "layouts/order/application"
   before_action :get_valid_to_order
+  before_action :get_id_order, only:[:show, :destroy]
   def new
     @order = Order.new
     @cart_items = current_cart.cart_items 
@@ -9,26 +11,38 @@ class OrdersController < ApplicationController
   end
   
   def create
-    unless current_cart.blank?
+      unless current_cart.blank?
       @order = current_user.orders.build order_params
       @order.save_price_to_order = current_cart.total_amount
       @order.order_code = Order.generate_order_code
+      @order.confirm!
       if @order.save
+        OrderMailer.with(order: @order).new_order_email.deliver_later
         session[:cart_id] = nil
         flash[:success] = 'User buyed success'
-        redirect_to root_path
+        redirect_to order_path(@order)
       else
         flash[:danger] = 'User buyed fail'
         render :new
       end
+      else
+        flash[:danger] = "You need to buy something!"
+        redirect_to products_path
+      end
+    end
+  def destroy
+    @order.cancel!
+    if @order.destroy
+      redirect_to root_path
     else
-      flash[:danger] = "You need to buy something!"
-      redirect_to products_path
+      redirect_to :show
     end
   end
-  def destroy
-  end
   private
+  def get_id_order
+    @order = Order.find params[:id]
+  end
+  
   def order_params
     params.require(:order).permit :address, :phone_number, :payments, :user_id,
     :cart_id
@@ -36,5 +50,5 @@ class OrdersController < ApplicationController
   def get_valid_to_order
     redirect_to products_path unless current_cart.present?
   end
-  
+
 end

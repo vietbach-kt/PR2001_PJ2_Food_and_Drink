@@ -41,7 +41,7 @@
             $<%= cart_item.total_product %>
           </td>
           <td>
-          <%= link_to cart_item_path(current_cart.id), remote:true, method: :delete, id:"delete-cart-item" do%>
+          <%= link_to cart_item_path(cart_item.id), remote:true, method: :delete, id:"delete-cart-item" do %>
             <%= image_tag 'remove.png',style:'width:20px'%>
           <% end %>
           </td>
@@ -57,7 +57,7 @@
           <h4> Total the Bill: </h4> 
         </div>
         <div class="col-md-3">
-          <h5 id="cart-total-amount">$<%= current_cart.total_amount%></h5>
+          <h5 id="cart-total-amount">$<%= current_cart.caculate_total_amount.sum%></h5>
           <div class="order">
             <%= form_for current_cart, url: new_order_path, method: :get, class:"form-group" do |f| %>
               <%= f.hidden_field :cart_id, value: current_cart.id %>

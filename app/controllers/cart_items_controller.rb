@@ -10,13 +10,13 @@ class CartItemsController < ApplicationController
         total_product: tatal_quantity * @cart_item.product.price
     else
       @cart_item = @cart.cart_items.build cart_item_params
-      @cart_item.total_product = @cart_item.product.price * cart_item_params[:quantity].to_i  #@cart_item.quantity
+      @cart_item.total_product = @cart_item.product.price * @cart_item.quantity#@cart_item.quantity
     end
     respond_to do |format|
       if @cart_item.save
         if @cart.save
           save_cart(@cart)
-          @cart.update_attributes total_amount: @cart.caculate_total_amount, user_id: current_user.id
+          @cart.update total_amount: @cart.caculate_total_amount.sum, user_id: current_user.id
         else
         end
         format.html{ redirect_to carts_path}
@@ -30,8 +30,8 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = current_cart.cart_items.find(params[:id])
     respond_to do |format|
-      if @cart_item.update_attributes(cart_item_params)
-        @cart.update_attributes total_amount: @cart.caculate_total_amount
+      if @cart_item.update(cart_item_params)
+        @cart.update total_amount: @cart.caculate_total_amount.sum
         format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
@@ -41,18 +41,18 @@ class CartItemsController < ApplicationController
     end
     @cart_items = current_cart.cart_items
   end
-  def destroy
-    @cart_item = current_cart.cart_items.find_by params[:id]
+  def destroys
+    @cart_item = current_cart.cart_items.find(params[:id])
     respond_to do |format|
       if @cart_item.destroy
-        format.html { redirect_to carts_path, notice: 'Update product in cart successfull.' }
+        format.html { redirect_to root_path, notice: 'Update product in cart successfull.' }
         format.js  
       else
         format.html { redirect_to carts_path, notice: 'Update product in cart failed.' }
         format.js
       end
     end
-    @cart_item = current_cart.cart_items
+    
   end
   private
   def cart_item_params

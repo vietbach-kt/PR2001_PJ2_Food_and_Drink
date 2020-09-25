@@ -1,10 +1,17 @@
 <div class="container">
   <%= form_for @order do |f| %>
     <div class="row">
-        <div class="col-sm-12">
-          <h3>1. Chọn hình thức thanh toán </h3>
-        </div>
-        <div class="col-sm-9">
+      <div class="col-sm-9">
+          <div class="col-sm-12">
+            <h4>1. Thanh toán bằng xu </h4>
+          </div>
+          <div class="row payment-coin">
+            <div class="col-sm-12">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <h4>2. Chọn hình thức thanh toán </h4>
+          </div>
           <div class="row display-payment">
             <div class="col-md-4">
               <div class="form-group" style="margin-top: 1em">
@@ -36,26 +43,30 @@
             <%= f.hidden_field :cart_id, value: current_cart.id %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.submit "ORDER NOW", class:"btn btn-danger"%>
+            <p>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</p>
           </div>
         </div>
-        <div class="col-sm-3">
-        <div class="information-user">
-          <div class="tital"> 
-            <h5> Address </h5>
-            <hr class="public-1">
-            <div class="address">
-              <b><%= current_user.name%></b>
-              <%= f.text_field :address , placeholder:"Enter adress", 
-               class:"form-control" , :required => true%>
-               <%= f.text_field :phone_number , placeholder:"Enter phone number", 
-               class:"form-control", style:"margin-top:5px;" , :required => true%>
-              <span></span>
+        <div class="col-sm-3 information">
+          <div class="information-user">
+            <div class="tital"> 
+              <h5> Address </h5>
+              <hr class="public-1">
+              <div class="address">
+                <b><%= current_user.name%></b>
+                <%= f.text_field :address , placeholder:"Enter adress", 
+                class:"form-control" , :required => true%>
+                <%= f.text_field :phone_number , placeholder:"Enter phone number", 
+                class:"form-control", style:"margin-top:5px;" , :required => true%>
+                <span></span>
+              </div>
             </div>
           </div>
-        </div>
         <div class="order-sumary">
           <div class="tital">
-            <h5>Cart(<span><%=current_cart.products.count%> products</span>)</h5>
+            <h5>
+              Cart(<span><%=current_cart.products.count%> products</span>)
+              <%=link_to "Edit", carts_path, class:"btn btn-outline-dark" %>
+            </h5>
             <hr class="public-1">
           </div>
           <div class="cart">
@@ -83,11 +94,11 @@
             </div>
             <hr class="public-1">
             <div class="row public">
-              <div class="col-md-9">
+              <div class="col-md-8">
                 <b>Total order:</b>
               </div>
-              <div class="col-md-3">
-                <h3 style="color:red;">$<%= current_cart.total_amount %>.00</h3>
+              <div class="col-md-4">
+                <h4 style="color:red;">$<%= current_cart.total_amount %>.0</h4>
               </div>
             </div>
           </div>

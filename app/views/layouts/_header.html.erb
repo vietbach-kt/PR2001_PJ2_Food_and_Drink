@@ -19,14 +19,12 @@
                 <li><a href="#"><i class="far fa-calendar-alt"></i>Booking</a> </li>
                 <li><a href="#"><i class="far fa-bookmark"></i>Bookmarks </a></li>                    
                 <li id="quantity-cart-item">
-                  <%unless current_cart.id.blank?%>
-                    <%= link_to cart_path(current_cart.id) do %>
-                      <i class="fas fa-shopping-cart"></i>
-                      Food Orders <span class="badge badge-pill badge-warning">
-                        <%= render 'products/cart_item' %>
-                      </span>
-                    <% end %>
-                  <%end%>
+                  <%= link_to carts_path do %>
+                    <i class="fas fa-shopping-cart"></i>
+                    Food Orders <span class="badge badge-pill badge-warning">
+                      <%= render 'products/cart_item' %>
+                    </span>
+                  <% end %>
                 </li>
                 <% if signed_in? %>                                       
                   <li class="nav-item dropdown">

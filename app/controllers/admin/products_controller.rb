@@ -12,7 +12,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-    @product = @category.products.build product_params_creates
+    @product = @category.products.build product_params_create
     if @product.save
       flash[:success] = 'create successful product'
       redirect_to admin_category_products_path(@category)
@@ -44,12 +44,10 @@ class Admin::ProductsController < Admin::BaseController
   end
   private
   def product_params_create
-    params.require(:product).permit :name_product, :information
-     ,:price, :kind, :category_id, images: []
+    params.require(:product).permit :name_product, :information ,:price, :kind, :category_id, images: []
   end
   def product_params_update
-    params.require(:product).permit :name_product, :information, 
-     :old_price ,:price, :kind, :category_id, images: []
+    params.require(:product).permit :name_product, :information, :old_price ,:price, :kind, :category_id, images: []
   end
 
   def get_product
