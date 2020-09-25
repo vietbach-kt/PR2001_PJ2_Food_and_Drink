@@ -4,6 +4,7 @@ class Admin::ProductsController < Admin::BaseController
   def index
     @category = Category.find_by params[:category_id]
     @products = Product.all
+    
   end
 
   def show; end

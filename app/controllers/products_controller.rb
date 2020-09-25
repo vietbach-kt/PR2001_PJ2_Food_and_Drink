@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :value_category
   def index
     @products = Product.all
+    
   end
 
   def show

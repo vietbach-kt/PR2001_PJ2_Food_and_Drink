@@ -2,11 +2,19 @@ Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
     get 'home', to: 'homepages#index'
+    get 'chat', to: 'chat#index'
     resources :categories do 
       resources :products
     end
     resources :products, only: [:index]
     resources :toppings, except: [:update, :edit, :show]
+    resources :conversations, only: [:create] do
+      member do
+        post :close
+      end
+  
+      resources :messages, only: [:create]
+    end
   end
 
 
