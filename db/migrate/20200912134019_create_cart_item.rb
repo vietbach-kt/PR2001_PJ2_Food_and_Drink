@@ -5,8 +5,8 @@ class CreateCartItem < ActiveRecord::Migration[6.0]
       t.integer :total_product
       t.integer :save_price_to_cart_item
       t.integer :category_id
-      t.references(:product, null: false, type: :bigint)
-      t.references(:cart, null: false, type: :bigint)
+      t.references(:product, type: :bigint)
+      t.references(:cart, type: :bigint)
       t.timestamps
     end
   end

@@ -2,17 +2,17 @@
   <div class="all-meal">
     <div class="top">
       <div class="top-img">
-        <%= link_to category_product_path(@category,product) do %>
+        <%= link_to category_product_path(product.category.id,product) do %>
           <%= image_tag product.images.first%>
         <% end %>
       </div>
       <div class="logo-img">
-        <%= image_tag @category.image %>
+        <%= image_tag product.category.image %>
       </div>
       <div class="top-text">
         <div class="heading">
           <h4>
-            <%= link_to category_product_path(@category,product) do %>
+            <%= link_to category_product_path(product.category.id,product) do %>
               <%= product.name_product%>
             <% end %>
           </h4>
@@ -20,7 +20,7 @@
         <div class="sub-heading">
           <h5>
             <%= link_to categories_path do %>
-              <%= @category.name%>
+              <%=product.category.name%>
             <% end %>
           </h5>
           <p>$<%= product.price %></p>
