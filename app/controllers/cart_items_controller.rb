@@ -41,7 +41,7 @@ class CartItemsController < ApplicationController
     end
     @cart_items = current_cart.cart_items
   end
-  def destroys
+  def destroy
     @cart_item = current_cart.cart_items.find(params[:id])
     respond_to do |format|
       if @cart_item.destroy
