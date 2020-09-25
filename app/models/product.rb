@@ -5,7 +5,6 @@ class Product < ApplicationRecord
 
 
   has_many :comments
-  has_many :toppings
   has_many :cart_items
   has_many_attached :images
 

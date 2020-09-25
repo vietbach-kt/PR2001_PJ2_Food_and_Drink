@@ -284,7 +284,7 @@ Reset Css
     mark,
     audio,
     video {
-        padding: 0;
+
         border: 0;
         font-size: 100%;
         font: inherit;
@@ -509,7 +509,6 @@ and something more appropriate for display headings */
     .nav-item {
         -webkit-transition: hide;
     }
-    .dropdown-toggle {}
     .dropdown-menu {
         position: absolute;
         left: 0;
