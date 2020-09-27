@@ -12,4 +12,19 @@
  *
  *= require_tree .
  *= require_self
+ *= require social-share-button
  */
+ .social-share-button .ssb-icon {
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-size: 18px 18px !important;
+    display: inline-block !important;
+    height: 50px !important;
+    width: 60px !important;
+  }
+  .social-share-button {
+    right: 1px;
+    top: 0px;
+    margin-top: -31px;
+    display: none
+  }

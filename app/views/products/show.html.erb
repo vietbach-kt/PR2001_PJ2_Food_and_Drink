@@ -94,8 +94,8 @@
               <li>
                 <div class="btn-group social-share">
                   <span class="dropdown-toggle-no-caret views" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="main" title="share">
-                    <i class="fas fa-share-alt"></i>
-                    <ins>Share</ins>
+                    <i class="fas fa-share-alt"></i> Share
+                    <%= social_share_button_tag('Share to Facebook', :url => products_path(@product), desc: @product.name_product) %>
                   </span>
                 </div>
                 </li>
@@ -256,5 +256,8 @@
 <script>
   $(".add-cart").click(function(){
     $(".alert-info").show().fadeOut(1000);
+  });
+  $("#dropdown-toggle-no-caret").click(function(){
+    $("#social-share-button").fadeToggle("slow");
   });
 </script>
