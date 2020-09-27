@@ -8,7 +8,7 @@ class Order < ApplicationRecord
 
     class << self
       def generate_order_code
-        code = [*('A'..'Z')].sample(10).join)
+        code = [*('A'..'Z')].sample(10).join
         
         while Order.find_by(order_code: code)
           code = [*('A'..'Z')].sample(10).join
