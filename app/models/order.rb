@@ -6,6 +6,8 @@ class Order < ApplicationRecord
     enum status: [ :confirm, :cancel, :delivered ]
     enum payment: {ship_code: 0, online: 1}
 
+    acts_as_paranoid
+    
     class << self
       def generate_order_code
         code = [*('A'..'Z')].sample(10).join

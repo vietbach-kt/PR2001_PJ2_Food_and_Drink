@@ -5,4 +5,6 @@ class Category < ApplicationRecord
   has_one_attached :image
   
   validates :name, presence: true
+
+  acts_as_paranoid
 end

@@ -18,6 +18,8 @@ class Product < ApplicationRecord
 
   delegate :name, :image, to: :category, allow_nil: true, prefix: true
 
+  acts_as_paranoid
+
   def self.limit_product
     order(created_at: :desc).limit(8)
   end
