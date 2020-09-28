@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :products, only: [:index]
     resources :toppings, except: [:update, :edit, :show]
+    resources :orders, only: [:index]
   end
 
 
