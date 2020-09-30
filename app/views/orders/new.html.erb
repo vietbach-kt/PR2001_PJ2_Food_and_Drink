@@ -40,6 +40,7 @@
             </div>
           </div>
           <div class="order-now" style="margin-top: 2em;">
+            <%= f.hidden_field :address_id, value: current_cart.id %>
             <%= f.hidden_field :cart_id, value: current_cart.id %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.submit "ORDER NOW", class:"btn btn-danger"%>
@@ -52,11 +53,11 @@
               <h5> Address </h5>
               <hr class="public-1">
               <div class="address">
-                <b><%= current_user.name%></b>
-                <%= f.text_field :address , placeholder:"Enter adress", 
-                class:"form-control" , :required => true%>
-                <%= f.text_field :phone_number , placeholder:"Enter phone number", 
-                class:"form-control", style:"margin-top:5px;" , :required => true%>
+                <% @address.each do |address|%>
+                  <b><%= address.user_name %></b>
+                  <p><%= address.stress+'-'+address.district+'-'+address.wards+'-'+address.province+'-Viet Nam' %><p>
+                  <p>Phone number: 0<%= address.numberphone%></p>
+                <% end %>
                 <span></span>
               </div>
             </div>

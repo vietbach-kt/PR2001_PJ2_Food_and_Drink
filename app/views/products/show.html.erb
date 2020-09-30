@@ -15,7 +15,7 @@
             <li class="breadcrumb-item">
               <%= link_to "All Meals", products_path %>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Meal Detail View</li>
+            <li class="breadcrumb-item active" aria-current="page"><%=@product.name_product%></li>
           </ul>
         </div>
       </div>
@@ -29,21 +29,27 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
             <% @product.images.each_with_index do |image, index| %>
-            <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" 
-             class="<%= index == 0 ? 'active' : '' %>">
-           </li>
-           <% end %>
-         </ol>
-         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <%= image_tag @product.images.first, class:"fix-size-for-carousel" %>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" 
+              class="<%= index == 0 ? 'active' : '' %>">
+              </li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <%= image_tag @product.images.first, class:"fix-size-for-carousel" %>
+            </div>
+            <% @product.images.drop(1).each do |image| %>
+              <div class="carousel-item">
+                <%= image_tag image, class:"fix-size-for-carousel" %>
+              </div>
+            <% end %>
           </div>
-          <% @product.images.drop(1).each do |image| %>
-          <div class="carousel-item">
-            <%= image_tag image, class:"fix-size-for-carousel" %>
-          </div>
-          <% end %>
-        </div>
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
         <div class="resto-meal-dt">
           <div class="resto-detail">
             <div class="resto-picy">
@@ -186,44 +192,6 @@
               <h4> Extras - <ins>(Please select any option)</ins></h4>
               <div class="non-veg j-top">
                 <h6>Non Vegetarian</h6>
-                <ul class="food-bootom">
-                  <% @toppings.each do |topping| %>
-                    <li>
-                      <p class="food-left">
-                        <%= check_box_tag "topping_ids[]", topping.id, false, class:"form-check-input" , id: "topping-#{topping.id}" %>
-                        <label for=<%= "topping-#{topping.id}" %>>
-                          <%= topping.name%>
-                        </label>
-                      </p>
-                      <span id="topping-price-<%= topping.id %>" data-topping="<%= topping.price  %>">
-                        $<%= topping.price%>
-                      </span>
-                    </li>
-                    <script>
-                    $("#qty_input").change(function() {
-                      const productPrice = $("#product-price").data("price");
-                      var convert = parseInt($("#qty_input").val());
-                      var tatal;
-                      var result;
-                      tatal = productPrice * convert;
-                      result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
-                      $("#topping-<%=topping.id%>").click(function (){
-                        var checkInput = $(this).val();
-                        var toppingPrice =  $("#topping-price-1").data("topping");
-                        if(this.checked){
-                          tatal =  toppingPrice + productPrice * convert;
-                        }
-                        else{
-                          tatal = productPrice * convert;
-                          result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
-                        }
-                        result = document.getElementById("tatal-product").innerHTML = "$" + tatal;    
-                        $("#tatal-product").html(result);
-                      })
-                    });
-                  </script>
-                  <% end %>
-                </ul>
               </div>
             <div class="Qty">
               <h4> Quantity</h4>
@@ -254,6 +222,14 @@
   </div> 
 </section> 
 <script>
+  $("#qty_input").change(function() {
+    const productPrice = $("#product-price").data("price");
+    var convert = parseInt($("#qty_input").val());
+    var tatal;
+    var result;
+    tatal = productPrice * convert;
+    result = document.getElementById("tatal-product").innerHTML = "$" + tatal;
+  });
   $(".add-cart").click(function(){
     $(".alert-info").show().fadeOut(1000);
   });

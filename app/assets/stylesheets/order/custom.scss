@@ -36,3 +36,54 @@
   .information{
     margin-top: 37px !important; 
   }
+  .new-address{
+    border: 1px solid #d8d6d6;
+    display: none;
+  }
+  .form-container{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 1em;
+    max-height: 25em;
+    height: 24em;
+  }
+  .form-container form input{
+    margin-top: 1em;
+    width: 21em;
+  }
+  .input-1{
+    margin-left: 68px;
+  }
+  .input-2{
+    margin-left: 2em;
+  }
+  .input-3{
+    margin-left: 96px;
+  }
+  .input-4{
+    margin-left: 90px;
+  }
+  .input-5{
+    margin-left: 96px;
+  }
+  .input-6{
+    margin-left: 76px;
+  }
+  .form-item .btn-primary{
+    margin-left: 149px;
+  }
+  .address-list{
+    border: 1px solid #cac6c6;
+    width: 32em;
+    height: 9em;
+  }
+  .address-item p{
+    font-size: 13px;
+    margin: -4px 0px 10px;
+  }
+  .address-item {
+    margin-left: 15px;
+  }
+  .address-item .form-address{
+    display: inline-block;
+  }
