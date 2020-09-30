@@ -38,7 +38,7 @@
             </script>
           </td>
           <td id="cart-price-<%=cart_item.id%>" data-pricePr="<%=cart_item.product.price%>">
-            $<%= cart_item.total_product %>
+            $<%= cart_item.get_total_price %>
           </td>
           <td>
           <%= link_to cart_item_path(cart_item.id), remote:true, method: :delete, id:"delete-cart-item" do %>
@@ -59,7 +59,7 @@
         <div class="col-md-3">
           <h5 id="cart-total-amount">$<%= current_cart.caculate_total_amount.sum%></h5>
           <div class="order">
-            <%= form_for current_cart, url: new_order_path, method: :get, class:"form-group" do |f| %>
+            <%= form_for current_cart, url: user_addresses_path(current_user.id), method: :get, class:"form-group" do |f| %>
               <%= f.hidden_field :cart_id, value: current_cart.id %>
               <%= f.submit "Go to order", class:"btn btn-origin" %>
             <% end %>
