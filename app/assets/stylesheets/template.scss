@@ -284,7 +284,7 @@ Reset Css
     mark,
     audio,
     video {
-
+        padding: 0px;
         border: 0;
         font-size: 100%;
         font: inherit;
@@ -411,7 +411,7 @@ Reset Css
         /* 1.125x body copy size = 18px */
         line-height: 1.050;
     }
-    blockquote {
+    blockquote {    
         font-size: 1.25em;
         /* 20px / 16px */
         line-height: 1.25;
@@ -6736,6 +6736,8 @@ and something more appropriate for display headings */
         border-bottom: 1px solid #e1e1e1;
         border-radius: 0px;
         min-height: 58px;
+        width: 19em;
+        max-width: 20em;
     }
     .ui.menu .fluid,
     .ui .vertical .menu .fluid {
@@ -8036,4 +8038,16 @@ and something more appropriate for display headings */
         margin-top: 25px;
         margin-bottom: 5px;
     }
+    // .badge {
+    //     color: #fff;
+    //     border-radius: 50%;
+    //     padding: 2px 4px;
+    //     font-size: 9px;
+    //     font-weight: 500;
+    //     margin-bottom: 2px;
+    //     background: #ffa803;
+    //     width: 13px;
+    //     height: 13px;
+    //     text-align: center;
+    // }
 }

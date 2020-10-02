@@ -40,6 +40,7 @@
             </div>
           </div>
           <div class="order-now" style="margin-top: 2em;">
+            <%= f.hidden_field :address_id, value: current_cart.id %>
             <%= f.hidden_field :cart_id, value: current_cart.id %>
             <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.submit "ORDER NOW", class:"btn btn-danger"%>
@@ -52,11 +53,11 @@
               <h5> Address </h5>
               <hr class="public-1">
               <div class="address">
-                <b><%= current_user.name%></b>
-                <%= f.text_field :address , placeholder:"Enter adress", 
-                class:"form-control" , :required => true%>
-                <%= f.text_field :phone_number , placeholder:"Enter phone number", 
-                class:"form-control", style:"margin-top:5px;" , :required => true%>
+                <% @address.each do |address|%>
+                  <b><%= address.user_name %></b>
+                  <p><%= address.stress+'-'+address.district+'-'+address.wards+'-'+address.province+'-Viet Nam' %><p>
+                  <p>Phone number: 0<%= address.numberphone%></p>
+                <% end %>
                 <span></span>
               </div>
             </div>
@@ -76,7 +77,7 @@
                     <b><%= cart_item.quantity %>x <span><%=cart_item.product.name_product%></span></b>
                 </div>
                 <div class="col-md-3">
-                  <p>$<%=cart_item.total_product%> </p>
+                  <p>$<%=cart_item.total_product.to_f%> </p>
                 </div>
                 <hr class="public-1">
               <% end %>
@@ -85,11 +86,11 @@
             <div class="row public">
               <div class="col-md-9">
                 <b>Provisional total:</b>
-                <p>Transport costs: </p>
+                <b>Coupons: </b>
               </div>
               <div class="col-md-3">
-                  <p>$<%= current_cart.total_amount%></p>
-                  <p>$0</p>
+                  <b>$<%= current_cart.total_amount.to_f%></b>
+                  <b>$<%= current_cart.coupons.to_f %></b>
               </div>
             </div>
             <hr class="public-1">
@@ -98,7 +99,7 @@
                 <b>Total order:</b>
               </div>
               <div class="col-md-4">
-                <h4 style="color:red;">$<%= current_cart.total_amount %>.0</h4>
+                <h4 style="color:red;">$<%= current_cart. total_price_after_coupons.to_f %></h4>
               </div>
             </div>
           </div>

@@ -69,10 +69,25 @@
       </div>
     </div>
     </div>
-        <div style=" width: 100% ">
-         <%= column_chart(@data) %>
-        </div>
-        <div style=" width: 100% ">
-         <%= column_chart(@data_1) %>
-        </div>
+    <div>
+    <%= form_tag(admin_search_path, method: "get", remote: true, id: "search-form-chart") do %>
+       <%= select_tag "filter", options_for_select(['Day', 
+                                                    'Week', 
+                                                    'Month']), id: "select-period" %>
+       <%= submit_tag "search", id:'search_submit' ,style: 'display:none'%>
+    <% end %>
+  </div>
+    <div id="graph-container">
+    <%= render 'graph', data: @data %>
+    </div>
   </section>
+  <script>
+  $("#select-period").on("change", function(){
+    $.ajax({
+      type: "get",
+      url: "search",
+      data: {filter: $(this).val()},
+      dataType: "script",
+    })
+  })
+</script>

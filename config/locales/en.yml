@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  homepages:
+    home:
+      title: Choose, Order and Checkout
+      exeption: Specify your address to suggest you the fast delivery
+      gotomail: Go To Meal
+      searchfood: Find Food
+      worktext1: Choose Your Area Restaurant
+      worktext2: Donec et tellus sed lorem condimentum maximus. Sed tempor, leo tempus condimentum.
+  layouts:

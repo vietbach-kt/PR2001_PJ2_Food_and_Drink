@@ -1,6 +1,47 @@
-<%= link_to new_admin_category_path, class:"btn btn-warning" do %>
-  Create category <i class='fas fa-pencil-alt'></i>
-<% end %>
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+    Create category
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Create</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <%= form_for :category, url: admin_categories_path do |f|%>
+          <div class="modal-body">
+           <div class="custom-file">
+              <b>Avata</b>
+              <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+              <%= f.file_field :image, class:"custom-file-input", id:"validatedCustomFile"%>
+            </div>
+            <div class="form-group">
+              <label>Name</label>
+              <%= f.text_field :name, class:"form-control" , placeholder:"Enter ..." %>
+            </div>
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <div class="form-group">
+              <%= f.submit "Generate", class:"btn btn-outline-warning"%>
+             </div>
+          </div>         
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+</div>
   <div class="card">
   <div class="card-header">
     <h2 >Categories</h2>

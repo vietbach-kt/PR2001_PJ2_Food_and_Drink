@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
+  acts_as_votable
+
   belongs_to :category
 
 
@@ -17,6 +19,8 @@ class Product < ApplicationRecord
   validates :information, presence: true, length: { maximum: 255 }
 
   delegate :name, :image, to: :category, allow_nil: true, prefix: true
+
+  acts_as_paranoid
 
   def self.limit_product
     order(created_at: :desc).limit(8)

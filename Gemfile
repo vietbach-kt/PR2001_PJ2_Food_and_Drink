@@ -11,6 +11,7 @@ gem 'dotenv-rails' , require: 'dotenv/rails-now'
 gem 'mysql2'
 gem 'chartkick'
 
+
 # Use Puma as the app server
 gem "puma", "~> 4.1"
 # Use SCSS for stylesheets
@@ -33,8 +34,11 @@ gem 'faker'
 
 gem 'groupdate'
 gem 'kaminari'
-# gem "paranoia"
-gem 'bootstrap-kaminari-views' 
+gem 'ransack'     
+gem 'bootstrap-kaminari-views'
+gem "paranoia"
+gem 'acts_as_votable'
+gem 'rails-i18n'
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
 # Reduces boot times through caching; required in config/boot.rb
