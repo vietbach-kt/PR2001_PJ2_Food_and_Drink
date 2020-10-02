@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   def create
     unless current_cart.blank?
     @order = current_user.orders.build order_params
-    @order.save_price_to_order = current_cart.total_amount
+    @order.save_price_to_order = current_cart.total_price_after_coupons
     @order.order_code = Order.generate_order_code
     @order.confirm!
     if @order.save
