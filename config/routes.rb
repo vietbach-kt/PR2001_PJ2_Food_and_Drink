@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :categories do 
       resources :products
     end
-    resources :products, only: [:index]
+    resources :products, only: [:index] 
     resources :toppings, except: [:update, :edit, :show]
     resources :orders, only: [:index]
   end
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   end
   resources :products, only:[:index]
   resources :products, only:[:show] do
+    member do
+     put "like" => "products#vote"
+    end
     resources :comments , only:[:index, :create]
   end
   resources :toppings, only:[:index]
