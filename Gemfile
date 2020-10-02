@@ -32,6 +32,7 @@ gem 'kaminari'
 gem 'ransack'     
 gem 'bootstrap-kaminari-views'
 gem "paranoia"
+gem 'acts_as_votable'
 gem 'rails-i18n'
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
