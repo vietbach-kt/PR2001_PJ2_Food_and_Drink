@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-lg-8 col-md-6 col-sm-12">
         <div class="left-text-b">
-          <h1 class="title">Choose, Order and Checkout</h1>
-          <h6 class="exeption">Specify your address to suggest you the fast delivery</h6>
+          <h1 class="title"><%= t ".title"%></h1>
+          <h6 class="exeption"><%= t ".exeption"%></h6>
           <p>Get our services from 24 hours.</p>
-          <a class="bnr-btn btn-link" href="#">Go To Meal</a>
+          <a class="bnr-btn btn-link" href="#"><%= t ".gotomail"%></a>
         </div>
       </div>
       <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
@@ -111,8 +111,8 @@
             <%= image_tag 'icon3.png' %>
           </div>
           <div class="work-text">
-            <h4>Choose Your Area Restaurant</h4>
-            <p>Donec et tellus sed lorem condimentum maximus. Sed tempor, leo tempus condimentum.</p>
+            <h4><%= t ".worktext1"%></h4>
+            <p><%= t ".worktext2"%></p>
           </div>
         </div>
       </div>
@@ -147,7 +147,9 @@
           <h1> Order Food Online In Your Area </h1>
         </div>
         <div class="your-location">
-          <span><i class="fas fa-map-marker-alt"></i><%= @addresses.first.stress %></span>Change Location
+          <% if signed_in? %>
+            <span><i class="fas fa-map-marker-alt"></i><%= @addresses.first.stress %></span>Change Location
+          <% end %>
         </div>
         <div class="all-items">
           <div class="search col-lg-4 col-md-6 col-sm-12 col-xs-12">
