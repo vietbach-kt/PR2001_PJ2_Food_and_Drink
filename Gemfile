@@ -29,6 +29,9 @@ gem "jbuilder", "~> 2.7"
 gem "aws-sdk-s3", require: false
 gem 'pry'
 gem 'devise'
+gem 'faker'
+
+gem 'groupdate'
 gem 'kaminari'
 # gem "paranoia"
 gem 'bootstrap-kaminari-views' 
