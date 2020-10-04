@@ -10,6 +10,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('admin-lte');
+require("packs/notifications.js.coffee")
+
 
 import 'bootstrap';
 import '../stylesheets/application';

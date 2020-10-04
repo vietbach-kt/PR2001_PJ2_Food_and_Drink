@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
     belongs_to :cart, optional: true, dependent: :destroy
     belongs_to :address,  optional: true
-
     belongs_to :user
+    
     
     enum status: [ :confirm, :cancel, :delivered ]
     enum payment: {ship_code: 0, online: 1}
