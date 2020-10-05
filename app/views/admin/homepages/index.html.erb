@@ -73,7 +73,7 @@
     <%= form_tag(admin_search_path, method: "get", remote: true, id: "search-form-chart") do %>
        <%= select_tag "filter", options_for_select(['Day', 
                                                     'Week', 
-                                                    'Month']), id: "select-period" %>
+                                                    'Month']), id: "select-period",class:"form-control" %>
        <%= submit_tag "search", id:'search_submit' ,style: 'display:none'%>
     <% end %>
   </div>
