@@ -39,3 +39,21 @@ en:
       worktext1: Choose Your Area Restaurant
       worktext2: Donec et tellus sed lorem condimentum maximus. Sed tempor, leo tempus condimentum.
   layouts:
+    header: 
+      list_inline1: Contact
+      list_inline2: About Us
+      list_inline3: Blog
+      list_inline4: Become a Partner
+      list_inline5: Booking
+      list_inline6: Bookmarks
+      list_inline7: FoodOrders
+      list_inline8: Login
+      item1: Home
+      item2: Meal
+      item3: Partners
+    footer:
+      sub_text: Connect with us for update and offers.
+      sub_text1: Enter your email address
+      new_letter: Subscribe Now
+      text:  A creative in-depth creative and content illustration that builds brand portraits in the eyes of consumers
+      language: English
