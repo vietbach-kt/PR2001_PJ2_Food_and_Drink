@@ -31,7 +31,6 @@ gem "aws-sdk-s3", require: false
 gem 'pry'
 gem 'devise'
 gem 'faker'
-
 gem 'groupdate'
 gem 'kaminari'
 gem 'ransack'     

@@ -15,6 +15,8 @@ require('datatables.net-bs4')
 import 'bootstrap';
 import '../stylesheets/application';
 import "@fortawesome/fontawesome-free/js/all";
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
 import $ from 'jquery';
 global.$ = jQuery;
 
@@ -27,14 +29,10 @@ document.addEventListener("turbolinks:load", () => {
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-$(document).ready(function() {
-  $('#data-table').dataTable()
-});
 //= require jquery
 //= require jquery_ujs
 //= require_tree 
-
-
+//= require owl.carousel
 (function() {
   $(document).on('click', '.toggle-window', function(e) {
     e.preventDefault();

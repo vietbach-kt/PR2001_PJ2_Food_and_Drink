@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:vote]
-  before_action :get_id_product, only: [:show, :vote]
+  before_action :get_id_product, only: [ :show, :vote]
   respond_to :js, :json, :html
   def index
-    @products = Product.all.page(params[:page]).per(2)
+    @categories = Category.all
+    @products = Product.all.page(params[:page]).per(6)
+    @product = Product.find_by params[:id]
+    @comments = @product.comments.count
   end
 
   def show

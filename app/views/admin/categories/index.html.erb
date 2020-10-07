@@ -55,12 +55,16 @@
           <th> Show Detail </th>
         </tr>
       </thead>
-    <tbody id="myTable">  
-        <% @categories.each_with_index  do |category, index| %>
-          <%= render 'category', category: category, index: index %>
-        <% end %>
-    </tbody>
+      <tbody id="myTable">  
+          <% @categories.each_with_index  do |category, index| %>
+            <%= render 'category', category: category, index: index %>
+          <% end %>
+      </tbody>
   </table>
   </div>
  
-  
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#data-table').dataTable()
+}); 
+</script>
