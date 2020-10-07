@@ -22,9 +22,9 @@
                   <%= link_to carts_path do %>
                     <i class="fas fa-shopping-cart"></i>
                     Food Orders 
-                    <span class="badge badge-pill badge-warning">
+                    <div class="badge badge-pill badge-warning">
                       <%= link_to "#{current_cart.cart_items.size}", carts_path  %>
-                    </span>
+                    </div>
                   <% end %>
                 </li>
                 <% if signed_in? %>                                       
@@ -77,7 +77,7 @@
                       <%= link_to "Meals", products_path, class:"nav-link"%>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Restautants</a>
+                      <%= link_to "Category", category_path(Category.first.id), class:"nav-link"%>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Partners</a>
