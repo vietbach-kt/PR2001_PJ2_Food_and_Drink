@@ -32,7 +32,11 @@ Rails.application.routes.draw do
     get 'edit', to: 'devise/registrations#edit'
     delete 'logout', to: 'devise/sessions#destroy'
   end
-  resources :products, only:[:index]
+  resources :products, only:[:index] do
+    collection do
+      get 'search'
+    end
+  end
   resources :products, only:[:show] do
     member do
      put "like" => "products#vote"

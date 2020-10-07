@@ -154,15 +154,10 @@
         <div class="all-items">
           <div class="search col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <form>
-              <input class="search-location" name="search" type="search" placeholder="Enter Your Location" />
-              <div class="icon-btn">
-                <div class="cross-icon">
-                  <i class="fas fa-crosshairs"></i>
-                </div>
-                <div class="s-m-btn">
-                  <button class="search-meal-btn btn-link">Search</button>
-                </div>
-              </div>
+              <%= form_tag products_path, :method => "get" do %>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "search" %>
+              <% end %>
             </form>
           </div>
         </div>
@@ -172,9 +167,6 @@
       <% @products.each do |product|%>
         <%= render 'product', product: product %>
       <% end %>
-      <div class="meal-btn">
-        <a href="#" class="m-btn btn-link">Show All</a>
-      </div>
     </div>
   </div>
 </section>

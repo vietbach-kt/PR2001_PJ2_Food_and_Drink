@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
   before_action :get_id_product, only: [:show, :vote]
   respond_to :js, :json, :html
   def index
-    @products = Product.all.page(params[:page]).per(2)
+    @q = params[:search]
+    if @q.present?
+      @products = Product.search(params[:search], load: true)
+    else
+      @products = Product.all
+    end
   end
 
   def show
