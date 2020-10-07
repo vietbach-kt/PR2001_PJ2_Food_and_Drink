@@ -31,6 +31,7 @@ gem "aws-sdk-s3", require: false
 gem 'pry'
 gem 'devise'
 gem 'faker'
+gem 'coffee-rails'
 gem 'groupdate'
 gem 'kaminari'
 gem 'ransack'     
@@ -38,6 +39,7 @@ gem 'bootstrap-kaminari-views'
 gem "paranoia"
 gem 'acts_as_votable'
 gem 'rails-i18n'
+gem 'searchkick'
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
 # Reduces boot times through caching; required in config/boot.rb

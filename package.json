@@ -12,6 +12,8 @@
     "chart.js": "^2.9.3",
     "chartkick": "^3.2.1",
     "datatables.net-bs4": "^1.10.22",
+    "coffee-loader": "^1.0.0",
+    "coffeescript": "1.12.7",
     "jquery": "^3.5.1",
     "owl.carousel": "^2.3.4",
     "owl.carousel2": "^2.2.1",

@@ -32,7 +32,11 @@ Rails.application.routes.draw do
     get 'edit', to: 'devise/registrations#edit'
     delete 'logout', to: 'devise/sessions#destroy'
   end
-  resources :products, only:[:index]
+  resources :products, only:[:index] do
+    collection do
+      get 'search'
+    end
+  end
   resources :products, only:[:show] do
     member do
      put "like" => "products#vote"
@@ -49,5 +53,10 @@ Rails.application.routes.draw do
   resources :carts, only:[:create, :index]
   resources :cart_items, only:[:create, :update, :destroy]
   resources :orders ,except:[:edit, :update]
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

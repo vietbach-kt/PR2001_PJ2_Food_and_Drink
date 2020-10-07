@@ -11,6 +11,8 @@ require("@rails/activestorage").start()
 require("channels")
 require('admin-lte');
 require('datatables.net-bs4')
+require("packs/notifications.js.coffee")
+
 
 import 'bootstrap';
 import '../stylesheets/application';

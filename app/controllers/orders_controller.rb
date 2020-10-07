@@ -12,12 +12,17 @@ class OrdersController < ApplicationController
   end
   
   def create
+    
     unless current_cart.blank?
     @order = current_user.orders.build order_params
     @order.save_price_to_order = current_cart.total_price_after_coupons
     @order.order_code = Order.generate_order_code
     @order.confirm!
     if @order.save
+
+      ([current_user]).each do |user|
+        Notification.create(recipient: user, actor: current_user, action: "posted", notifiable: @order)
+      end
       OrderMailer.with(order: @order).new_order_email.deliver_later
       session[:cart_id] = nil
       flash[:success] = 'User buyed success'

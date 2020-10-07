@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :notifications, foreign_key: :recipient_id
   acts_as_paranoid
   acts_as_voter
 end
