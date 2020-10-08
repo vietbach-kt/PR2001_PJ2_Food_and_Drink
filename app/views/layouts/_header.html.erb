@@ -24,7 +24,7 @@
                     <%= t(".list_inline7")%> 
                     <span class="badge badge-pill badge-warning">
                       <%= link_to "#{current_cart.cart_items.size}", carts_path  %>
-                    </span>
+                    </div>
                   <% end %>
                 </li>
                 <% if signed_in? %>                                       
@@ -75,6 +75,9 @@
                     </li>
                     <li class="nav-item">
                       <%= link_to t(".item2"), products_path, class:"nav-link"%>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to "Category", category_path(Category.first.id), class:"nav-link"%>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#"><%= t(".item3")%></a>

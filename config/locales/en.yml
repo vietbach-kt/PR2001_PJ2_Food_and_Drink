@@ -38,6 +38,7 @@ en:
       searchfood: Find Food
       worktext1: Choose Your Area Restaurant
       worktext2: Donec et tellus sed lorem condimentum maximus. Sed tempor, leo tempus condimentum.
+      worktext3: Order Food Online In Your Area 
   layouts:
     header: 
       list_inline1: Contact
