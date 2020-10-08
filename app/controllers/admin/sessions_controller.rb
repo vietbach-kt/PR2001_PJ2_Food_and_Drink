@@ -3,7 +3,7 @@ class Admin::SessionsController < Admin::BaseController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user &.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       log_in_admin(user)
       redirect_to admin_home_path
     else
