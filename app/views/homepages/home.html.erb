@@ -80,12 +80,17 @@
         </div>
         <div class="all-items">
           <div class="search col-lg-4 col-md-6 col-sm-12 col-xs-12">
-            <form>
-              <%= form_tag products_path, :method => "get" do %>
-                <%= text_field_tag :search, params[:search] %>
-                <%= submit_tag "search" %>
-              <% end %>
-            </form>
+            <%= form_tag products_path,:method => :get do %>
+              <%= text_field_tag :search, params[:search], class:"search-location",placeholder:"What kind of do want?" %>
+              <div class="icon-btn">
+                <div class="cross-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <div class="s-m-btn">
+                    <%= submit_tag "search", class:"search-meal-btn btn-link"%>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
