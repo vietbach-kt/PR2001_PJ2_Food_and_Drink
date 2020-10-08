@@ -40,6 +40,7 @@ gem "paranoia"
 gem 'acts_as_votable'
 gem 'rails-i18n'
 gem 'searchkick'
+gem 'whenever', require: false
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
 # Reduces boot times through caching; required in config/boot.rb
