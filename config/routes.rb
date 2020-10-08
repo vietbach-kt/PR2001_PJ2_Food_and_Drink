@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
-    root 'homepages#index'
-    get '/', to: 'homepages#index'
+    get '/', to: 'sessions#new'
+    get 'home', to: 'homepages#index'
     get 'chat', to: 'chat#index'
     get 'search', to: 'homepages#search'
+    
+    resources :sessions, only: %i[new create destroy]
     resources :categories do 
       resources :products
     end
