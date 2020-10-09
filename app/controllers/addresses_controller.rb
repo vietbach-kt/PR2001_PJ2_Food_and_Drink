@@ -24,9 +24,14 @@ class AddressesController < ApplicationController
   def update
       
   end
-  def delete
-      
-  end
+  def destroy
+    @address = current_user.addresses.find params[:id]
+    @address.destroy
+    respond_to do |format|
+      format.js
+      format.html {redirect_to admin_addresses_path }
+      format.json { head :no_content }
+    end
   private 
   def address_params
     params.require(:address).permit :user_name, :numberphone, :stress, :wards, :district, :province
