@@ -1,11 +1,8 @@
-class Admin::SessionsController < Admin::BaseController
-  def new; end
+class Admin::SessionsController< Admin::BaseController
   include Admin::SessionsHelper
+  def new; end
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    
-    binding.pry
-
     if user&.authenticate(params[:session][:password])
       log_in_admin(user)
       redirect_to admin_home_path

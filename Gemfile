@@ -26,7 +26,7 @@ gem "jbuilder", "~> 2.7"
 # gem "redis", "~> 4.0"
 # Use Active Model has_secure_password
 # gem 'attach'
-gem "bcrypt", "~> 3.1.7"
+gem 'bcrypt'
 gem "aws-sdk-s3", require: false
 gem 'pry'
 gem 'devise'

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root 'homepages#home'
   namespace :admin do
-    root 'homepages#index'
-    get '/', to: 'homepages#index'
+    get '/', to: 'sessions#new'
+    post 'login', to: 'sessions#create'
+    get 'home', to: 'homepages#index'
     get 'chat', to: 'chat#index'
     get 'search', to: 'homepages#search'
     
